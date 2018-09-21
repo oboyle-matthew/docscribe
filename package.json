@@ -1,0 +1,15 @@
+{
+  "name": "docscribe",
+  "version": "1.0.0",
+  "description": "This is the respository where you will keep EVERYTHING related to this CompSci 408 project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@coursework.cs.duke.edu:CompSci408_2018Fall/app_postoppain.git"
+  },
+  "author": "",
+  "license": "ISC"
+}

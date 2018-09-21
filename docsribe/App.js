@@ -10,9 +10,9 @@ export default class App extends React.Component {
           <TextQuestion question={"This is the first question: "}/>
           <TextQuestion question={"This is the second question: "}/>
           <TextQuestion question={"This is the third question: "}/>
-          <SliderQuestion question={"This is a slider question: Min=5, Max=10, Step=1 "} min={5} max={10} step={1}/>
-          <SliderQuestion question={"This is a different slider: Min=0, Max=1000, Step=10 "} min={0} max={1000} step={10}/>
-
+          <SliderQuestion question={"Please rate your average pain throughout the day: "} min={0} max={10} step={1}
+                          minLabel={"No pain at all"} maxLabel={"Pain as bad as it possibly could be"}
+          />
       </View>
     );
   }

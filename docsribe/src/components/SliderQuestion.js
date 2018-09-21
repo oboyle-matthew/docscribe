@@ -7,14 +7,14 @@ export default class TextQuestion extends React.Component {
     constructor() {
         super();
         this.state = {
-            answer: 0
+            answer: -1
         }
     }
 
     componentDidMount() {
-        const { min } = this.props;
+        const { max, min } = this.props;
         this.setState({
-            answer: min
+            answer: (max + min) / 2
         });
     }
 
@@ -32,7 +32,11 @@ export default class TextQuestion extends React.Component {
                     onValueChange={(value) => this.setState({answer: value})}
                     value={answer}
                 />
-                <Text>{answer}</Text>
+                <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+                    <Text style={{width: 100, height: 100, textAlign: 'left'}}>{this.props.minLabel}</Text>
+                    <Text style={{width: 100, height: 100, textAlign: 'center'}}>{answer}</Text>
+                    <Text style={{width: 100, height: 100, textAlign: 'right'}}>{this.props.maxLabel}</Text>
+                </View>
             </View>
         );
     }
@@ -42,5 +46,7 @@ TextQuestion.propTypes = {
     question: PropTypes.string,
     min: PropTypes.number,
     max: PropTypes.number,
-    step: PropTypes.number
+    step: PropTypes.number,
+    minLabel: PropTypes.string,
+    maxLabel: PropTypes.string
 };

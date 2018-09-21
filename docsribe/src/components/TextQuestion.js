@@ -23,6 +23,7 @@ export default class TextQuestion extends React.Component {
                     placeholder={"Input your answer here"}
                     value={answer}
                 />
+
             </View>
         );
     }

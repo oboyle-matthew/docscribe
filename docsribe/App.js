@@ -1,11 +1,18 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import TextQuestion from './src/components/TextQuestion';
+import SliderQuestion from './src/components/SliderQuestion';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Close up App.js to start working on your app!</Text>
+          <TextQuestion question={"This is the first question: "}/>
+          <TextQuestion question={"This is the second question: "}/>
+          <TextQuestion question={"This is the third question: "}/>
+          <SliderQuestion question={"This is a slider question: Min=5, Max=10, Step=1 "} min={5} max={10} step={1}/>
+          <SliderQuestion question={"This is a different slider: Min=0, Max=1000, Step=10 "} min={0} max={1000} step={10}/>
+
       </View>
     );
   }

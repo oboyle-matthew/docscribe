@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, Slider } from 'react-native';
 
-export default class TextQuestion extends React.Component {
+export default class SliderQuestion extends React.Component {
 
     constructor() {
         super();
@@ -42,7 +42,7 @@ export default class TextQuestion extends React.Component {
     }
 }
 
-TextQuestion.propTypes = {
+SliderQuestion.propTypes = {
     question: PropTypes.string,
     min: PropTypes.number,
     max: PropTypes.number,

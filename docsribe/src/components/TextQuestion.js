@@ -15,15 +15,14 @@ export default class TextQuestion extends React.Component {
         const { question } = this.props;
         const { answer } = this.state;
         return (
-            <View>
-                <Text>{question}</Text>
+            <View style={{display: 'flex', flexDirection: 'row'}}>
+                <Text style={{width: '40%'}}>{question}</Text>
                 <TextInput
-                    style={{height: 40, width: 150, borderColor: 'gray', borderWidth: 1}}
+                    style={{borderColor: 'gray', borderWidth: 1}}
                     onChangeText={(newText) => this.setState({answer: newText})}
                     placeholder={"Input your answer here"}
                     value={answer}
                 />
-
             </View>
         );
     }

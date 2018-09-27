@@ -19,8 +19,8 @@ People who attended:
 
 | Item | Description |
 |:----|:----|
-|Agenda Item 1 | - <br> - |
-|Agenda Item 2 | - <br> - |
+|Agenda Item 1 | - User testing - |
+|Agenda Item 2 | - Observation of current processes - |
 
 
 ## Discussion Items

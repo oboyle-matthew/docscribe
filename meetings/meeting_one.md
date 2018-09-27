@@ -19,8 +19,8 @@ People who attended:
 
 | Item | Description |
 |:----|:----|
-|Agenda Item 1 | - User testing - |
-|Agenda Item 2 | - Observation of current processes - |
+|Agenda Item 1 | - Dr. Olson feedback - |
+|Agenda Item 2 | - Nurse + MD feedback - |
 
 
 ## Discussion Items

@@ -7,8 +7,14 @@ export default class TextQuestion extends React.Component {
     constructor() {
         super();
         this.state = {
-            answer: ''
+            answer: '',
+            mostRecent: ''
         }
+    }
+
+    textChange = (newText) => {
+        this.setState({answer: newText});
+        this.setState({mostRecent: newText});
     }
 
     render() {
@@ -18,8 +24,10 @@ export default class TextQuestion extends React.Component {
             <View style={{display: 'flex', flexDirection: 'row'}}>
                 <Text style={{width: '40%'}}>{question}</Text>
                 <TextInput
-                    style={{borderColor: 'gray', borderWidth: 1}}
-                    onChangeText={(newText) => this.setState({answer: newText})}
+                    multiline
+                    blurOnSubmit
+                    style={{borderColor: 'gray', borderWidth: 1, height: '100%', width: '50%'}}
+                    onChangeText={(newText) => this.textChange}
                     placeholder={"Input your answer here"}
                     value={answer}
                 />

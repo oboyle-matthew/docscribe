@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, View, Slider } from 'react-native';
+import { Text, View } from 'react-native';
+import { Slider } from 'react-native-elements';
 
 export default class SliderQuestion extends React.Component {
 

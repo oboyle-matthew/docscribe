@@ -59,5 +59,7 @@ export default class BinaryQuestion extends React.Component {
 }
 
 BinaryQuestion.propTypes = {
-    question: PropTypes.string
+    question: PropTypes.string,
+    optionOne: PropTypes.string,
+    optionTwo: PropTypes.string
 }

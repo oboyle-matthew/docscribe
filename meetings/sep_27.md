@@ -33,6 +33,7 @@ People who attended:
 | Pain threshold slider | Dr. Olson | Best to use happy faces for pain scale (VAS specifically) -- questionnaire questions should be written at an eight grade level |
 | REDCap P.O.C | Ben | Relevant people (Cory Ennis + Marissa Stroo) who can help with REDCap interface and understand privacy concerns there from a technical perspective; Matt Roman is the EPIC guy |
 | Observation of current process | Ben | Maria Manson is research coordinator who actually is the one inputting information into REDCap; would be useful for us to understand her current process and what information she uses/doens't use |
+| Nurse + colleague feedback on current prototype | Matt, Nurse, colleague | Like the mechanics of the app itself; think that including relevant questions from the first box would be most useful; best patients to target are going to be patients getting scopes (much younger, more likely to understand mechanics) and select patients doing total hip; also encouraged simplicity and discouraged free response (want to make it as streamlined and simple as possible for patients to complete, otherwise they won't); mentioned keeping app to two paginations maximum to prevent user exhaustion |
 
 
 ## Action Items

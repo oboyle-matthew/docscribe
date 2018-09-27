@@ -29,7 +29,7 @@ People who attended:
 
 | Item | Who | Notes |
 | ---- | ---- | ---- |
-| item | who | notes |
+| Content of questions themselves | Dr. O | * One page per topic (grouped by pain and mobility) |
 
 
 ## Action Items

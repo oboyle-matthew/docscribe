@@ -29,7 +29,10 @@ People who attended:
 
 | Item | Who | Notes |
 | ---- | ---- | ---- |
-| Content of questions themselves | Dr. O | - One page per topic (grouped by pain and mobility) |
+| Content of questions themselves | Dr. O | One page per topic (grouped by pain and mobility) -- questions pulled together by Dr. O; awaiting signoff from Dr. Brian Lewis on them |
+| Pain threshold slider | Dr. O | Best to use happy faces for pain scale (VAS specifically) -- questionnaire questions should be written at an eight grade level |
+| REDCap P.O.C | Ben | Relevant people (Cory Ennis + Marissa Stroo) who can help with REDCap interface and understand privacy concerns there from a technical perspective; Matt Roman is the EPIC guy |
+| Observation of current process | Ben | Maria Manson is research coordinator who actually is the one inputting information into REDCap; would be useful for us to understand her current process and what information she uses/doens't use |
 
 
 ## Action Items

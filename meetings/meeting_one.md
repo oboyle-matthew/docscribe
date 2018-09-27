@@ -11,9 +11,9 @@ __Note Taker:__ Ben Hubsch
 ## Attendees
 
 People who attended:
-- Person A
-- Person B
-- Person C
+- Ben Hubsch
+- Matt O'Boyle
+- Nik Bramblett
 
 ## Agenda Items
 

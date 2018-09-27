@@ -14,6 +14,8 @@ People who attended:
 - Ben Hubsch
 - Matt O'Boyle
 - Nik Bramblett
+- Dr. Olson
+- Nurse + colleague of Dr. Olson's
 
 ## Agenda Items
 

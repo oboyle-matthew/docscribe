@@ -3,50 +3,43 @@ import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 import TextQuestion from './components/TextQuestion';
 import SliderQuestion from './components/SliderQuestion';
 import BinaryQuestion from './components/BinaryQuestion';
-import PickerQuestion from "./components/PickerQuestion";
+import PickerQuestion from './components/PickerQuestion';
 
 export default class Pain extends React.Component {
   static navigationOptions = {
     title: 'Pain',
   };
 
-  constructor() {
-      super();
-      this.state = {
-          submitted: false,
-      }
-  }
-
-  submit() {
-      this.setState({submitted: true})
-  }
-
   confirm() {
-      Alert.alert(
-          'Submit',
-          "Are you sure you want to submit the above information for today",
-          [
-              {text: 'Yes', onPress: () => this.submit()},
-              {text: 'No', style: 'cancel'},
-          ]
-      )
+    Alert.alert('Submit', 'Are you sure you want to submit the above information for today', [
+      { text: 'Yes', onPress: () => this.submit() },
+      { text: 'No', style: 'cancel' },
+    ]);
   }
 
   render() {
-    const {submitted, navigation} = this.props;
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
-          <TextQuestion question={"Any comments for today?"}/>
-          <SliderQuestion question={"\n\nPlease rate your average pain throughout the day: "} min={0} max={10} step={1}
-                          minLabel={"No pain at all"} maxLabel={"Pain as bad as it possibly could be"}
-          />
-          <BinaryQuestion question={"Did you adhere to the prescribed usage guidelines today?"}
-                          optionOne={"Yes"} optionTwo={"No"} style={{marginBottom: '20%'}}
-          />
-          <Text/> <Text/>
-          <PickerQuestion question={"Number of pills taken today"}/>
-          <Text/> <Text/> <Text/> <Text/> <Text/>
-              <Button title={"Continue"} onPress={() => navigation.navigate('Mobility')}/>
+        <TextQuestion question="Any comments for today?" />
+        <SliderQuestion
+          question={'\n\nPlease rate your average pain throughout the day: '}
+          min={0}
+          max={10}
+          step={1}
+          minLabel="No pain at all"
+          maxLabel="Pain as bad as it possibly could be"
+        />
+        <BinaryQuestion
+          question="Did you adhere to the prescribed usage guidelines today?"
+          optionOne="Yes"
+          optionTwo="No"
+          style={{ marginBottom: '20%' }}
+        />
+        <Text /> <Text />
+        <PickerQuestion question="Number of pills taken today" />
+        <Text /> <Text /> <Text /> <Text /> <Text />
+        <Button title="Continue" onPress={() => navigation.navigate('Mobility')} />
       </View>
     );
   }

@@ -9,7 +9,7 @@ export default class Pain extends React.Component {
   static navigationOptions = {
     title: 'Mobility',
   };
-  
+
   constructor() {
       super();
       this.state = {

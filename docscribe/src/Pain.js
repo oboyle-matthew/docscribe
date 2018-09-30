@@ -33,12 +33,9 @@ export default class Pain extends React.Component {
   }
 
   render() {
+    const {submitted, navigation} = this.props;
     return (
       <View style={styles.container}>
-          {this.state.submitted ? <View><Text>You have submitted!</Text>
-              <Button style={{backgroundColor: 'red'}} title={"Submit another form"} onPress={() => this.setState({submitted: false})}/></View>
-          : <View>
-          <Text/> <Text/> <Text/>
           <TextQuestion question={"Any comments for today?"}/>
           <SliderQuestion question={"\n\nPlease rate your average pain throughout the day: "} min={0} max={10} step={1}
                           minLabel={"No pain at all"} maxLabel={"Pain as bad as it possibly could be"}
@@ -49,7 +46,7 @@ export default class Pain extends React.Component {
           <Text/> <Text/>
           <PickerQuestion question={"Number of pills taken today"}/>
           <Text/> <Text/> <Text/> <Text/> <Text/>
-              <Button style={{backgroundColor: 'red'}} title={"Submit"} onPress={() => this.props.navigation.navigate('Mobility')}/></View>}
+              <Button title={"Continue"} onPress={() => navigation.navigate('Mobility')}/>
       </View>
     );
   }

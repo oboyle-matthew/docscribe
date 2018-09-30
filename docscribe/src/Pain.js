@@ -49,7 +49,7 @@ export default class Pain extends React.Component {
           <Text/> <Text/>
           <PickerQuestion question={"Number of pills taken today"}/>
           <Text/> <Text/> <Text/> <Text/> <Text/>
-              <Button style={{backgroundColor: 'red'}} title={"Submit"} onPress={() => this.confirm()}/></View>}
+              <Button style={{backgroundColor: 'red'}} title={"Submit"} onPress={() => this.props.navigation.navigate('Mobility')}/></View>}
       </View>
     );
   }

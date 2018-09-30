@@ -8,6 +8,8 @@ import {
 const App = createStackNavigator({
   Pain: { screen: Pain },
   Mobility:  { screen: Mobility },
+}, {
+    initialRouteName: 'Pain', // specifies first page to be shown
 });
 
 export default App;

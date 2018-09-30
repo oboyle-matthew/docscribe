@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Alert } from 'react-native';
-import TextQuestion from './src/components/TextQuestion';
-import SliderQuestion from './src/components/SliderQuestion';
-import BinaryQuestion from './src/components/BinaryQuestion';
-import PickerQuestion from "./src/components/PickerQuestion";
+import TextQuestion from './components/TextQuestion';
+import SliderQuestion from './components/SliderQuestion';
+import BinaryQuestion from './components/BinaryQuestion';
+import PickerQuestion from "./components/PickerQuestion";
 
 export default class Pain extends React.Component {
       constructor() {

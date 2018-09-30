@@ -1,8 +1,9 @@
 import React from 'react';
-import Pain from './Pain';
+import Pain from './src/Pain';
+
 
 export default class App extends React.Component {
   render() {
-    <Pain />
+    return <Pain />;
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, Button, Alert } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import TextQuestion from './components/TextQuestion';
 import SliderQuestion from './components/SliderQuestion';
 import BinaryQuestion from './components/BinaryQuestion';
@@ -19,13 +19,6 @@ export default class Pain extends React.Component {
   static navigationOptions = {
     title: 'Pain',
   };
-
-  confirm() {
-    Alert.alert('Submit', 'Are you sure you want to submit the above information for today', [
-      { text: 'Yes', onPress: () => this.submit() },
-      { text: 'No', style: 'cancel' },
-    ]);
-  }
 
   render() {
     const { navigation } = this.props;

@@ -4,62 +4,55 @@ import { Text, View } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 
 export default class BinaryQuestion extends React.Component {
-
-    constructor() {
-        super();
-        this.state = {
-            oneChecked: false,
-            twoChecked: false
-        }
-    }
-
-    checkOne = () => {
-        if (!this.state.oneChecked && this.state.twoChecked) {
-            this.setState({
-                twoChecked: false
-            })
-        }
-        this.setState({
-            oneChecked: !this.state.oneChecked,
-        })
+  constructor(props) {
+    super(props);
+    this.state = {
+      oneChecked: false,
+      twoChecked: false,
     };
+  }
 
-    checkTwo = () => {
-        if (!this.state.twoChecked && this.state.oneChecked) {
-            this.setState({
-                oneChecked: false
-            })
-        }
-        this.setState({
-            twoChecked: !this.state.twoChecked,
-        })
-    };
-
-    render() {
-        const { question } = this.props;
-        return (
-            <View style={{display: 'flex', flexDirection: 'row'}}>
-                <Text style={{width: '40%', textAlign: 'center'}}>{question}</Text>
-                <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-                    <CheckBox
-                        title={this.props.optionOne}
-                        checked={this.state.oneChecked}
-                        onPress={this.checkOne}
-                    />
-                    <CheckBox
-                        title={this.props.optionTwo}
-                        checked={this.state.twoChecked}
-                        onPress={this.checkTwo}
-                    />
-                </View>
-
-            </View>
-        );
+  checkOne = () => {
+    const { oneChecked, twoChecked } = this.state;
+    if (!oneChecked && twoChecked) {
+      this.setState({
+        twoChecked: false,
+      });
     }
+    this.setState({
+      oneChecked: !oneChecked,
+    });
+  };
+
+  checkTwo = () => {
+    const { oneChecked, twoChecked } = this.state;
+    if (!twoChecked && oneChecked) {
+      this.setState({
+        oneChecked: false,
+      });
+    }
+    this.setState({
+      twoChecked: !twoChecked,
+    });
+  };
+
+  render() {
+    const { question, optionOne, optionTwo } = this.props;
+    const { oneChecked, twoChecked } = this.state;
+    return (
+      <View style={{ display: 'flex', flexDirection: 'row' }}>
+        <Text style={{ width: '40%', textAlign: 'center' }}>{question}</Text>
+        <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+          <CheckBox title={optionOne} checked={oneChecked} onPress={this.checkOne} />
+          <CheckBox title={optionTwo} checked={twoChecked} onPress={this.checkTwo} />
+        </View>
+      </View>
+    );
+  }
 }
 
 BinaryQuestion.propTypes = {
-    question: PropTypes.string,
-    optionOne: PropTypes.string,
-    optionTwo: PropTypes.string
-}
+  question: PropTypes.string.isRequired,
+  optionOne: PropTypes.string.isRequired,
+  optionTwo: PropTypes.string.isRequired,
+};

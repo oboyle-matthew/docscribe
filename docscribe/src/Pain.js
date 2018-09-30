@@ -1,9 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 import TextQuestion from './components/TextQuestion';
 import SliderQuestion from './components/SliderQuestion';
 import BinaryQuestion from './components/BinaryQuestion';
 import PickerQuestion from './components/PickerQuestion';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default class Pain extends React.Component {
   static navigationOptions = {
@@ -45,11 +55,8 @@ export default class Pain extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+Pain.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
+};

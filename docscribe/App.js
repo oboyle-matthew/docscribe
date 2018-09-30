@@ -8,7 +8,7 @@ const App = createStackNavigator(
     Mobility: { screen: Mobility },
   },
   {
-    initialRouteName: 'Pain', // specifies first page to be shown
+    initialRouteName: 'Pain', // first page to be shown
   }
 );
 

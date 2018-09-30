@@ -2,6 +2,15 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 import BinaryQuestion from './components/BinaryQuestion';
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
 export default class Pain extends React.Component {
   static navigationOptions = {
     title: 'Mobility',
@@ -57,12 +66,3 @@ export default class Pain extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

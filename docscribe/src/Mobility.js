@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Alert } from 'react-native';
+import { StyleSheet, Text, ScrollView, View, Button, Alert } from 'react-native';
 import BinaryQuestion from './components/BinaryQuestion';
+import SliderQuestion from './components/SliderQuestion';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,10 +13,6 @@ const styles = StyleSheet.create({
 });
 
 export default class Pain extends React.Component {
-  static navigationOptions = {
-    title: 'Mobility',
-  };
-
   constructor() {
     super();
     this.state = {
@@ -37,7 +34,7 @@ export default class Pain extends React.Component {
   render() {
     const { submitted } = this.state;
     return (
-      <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}>
         {submitted ? (
           <View>
             <Text>You have submitted!</Text>
@@ -55,6 +52,14 @@ export default class Pain extends React.Component {
               optionOne="Yes"
               optionTwo="No"
             />
+            <SliderQuestion
+              question={'\n\nPlease rate your average pain throughout the day: '}
+              min={0}
+              max={10}
+              step={1}
+              minLabel="No pain at all"
+              maxLabel="Pain as bad as it possibly could be"
+            />
             <Button
               style={{ backgroundColor: 'red' }}
               title="Submit"
@@ -62,7 +67,7 @@ export default class Pain extends React.Component {
             />
           </View>
         )}
-      </View>
+      </ScrollView>
     );
   }
 }

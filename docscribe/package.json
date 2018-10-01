@@ -15,8 +15,10 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
     "react-native-app": "^1.0.0",
     "react-native-elements": "^0.19.1",
+    "react-native-paper": "^2.0.1",
     "react-native-picker-select": "^4.4.0",
-    "react-navigation": "^2.17.0"
+    "react-navigation": "^2.17.0",
+    "react-navigation-material-bottom-tabs": "^0.4.0"
   },
   "devDependencies": {
     "prettier": "^1.14.3",

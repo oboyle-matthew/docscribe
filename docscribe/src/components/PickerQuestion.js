@@ -15,7 +15,7 @@ export default class PickerQuestion extends Component {
         },
         {
           label: '1',
-          value: 0,
+          value: 1,
         },
         {
           label: '2',

@@ -31,7 +31,8 @@ People who attended:
 
 | Item | Who | Notes |
 | ---- | ---- | ---- |
-| | | |
+| Feasibility of implementing the app ourselves | Jeff | Not feasible at all; he estimates would take about a year of work to get fully secure and compliant with privacy concerns + get approval for it; we only have a semester's worth of one class of time to get it done |
+| MyCap current functionality | Jeff + Marissa | MyCap has been out for about a year but hasn't been widely adopted yet; no demos available; some questions as to the customizability of the UI (it's ugly) |
 
 
 ## Action Items

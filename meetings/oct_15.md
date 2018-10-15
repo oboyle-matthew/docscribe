@@ -34,6 +34,7 @@ People who attended:
 | Feasibility of implementing the app ourselves | Jeff | Not feasible at all; he estimates would take about a year of work to get fully secure and compliant with privacy concerns + get approval for it; we only have a semester's worth of one class of time to get it done |
 | MyCap current functionality | Jeff + Marissa | MyCap has been out for about a year but hasn't been widely adopted yet; no demos available; some questions as to the customizability of the UI (it's ugly) |
 | Dev opportunities | All | None really; it's entirely developed at Vanderbilt; the goal of our project would be to get a specific instance up and running for Dr. Olson and aggresively look for bugs and report them |
+| Status of current REDCap project | Jeff + Marissa | In looking at the backend REDCap systems, looks like the project Olson is currently using in REDCap may be put together in a little bit of a confusing way; unable to find a REDCap ID number from the research protocol |
 
 
 ## Action Items

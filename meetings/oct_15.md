@@ -24,7 +24,7 @@ People who attended:
 |:----|:----|
 |Agenda Item 1 | - MyCap current functionality - |
 |Agenda Item 2 | - Feasibility of implementing the app ourselves - |
-|Agenda Item 3 | - Dev. opportunities - |
+|Agenda Item 3 | - Dev opportunities - |
 
 
 ## Discussion Items
@@ -33,6 +33,7 @@ People who attended:
 | ---- | ---- | ---- |
 | Feasibility of implementing the app ourselves | Jeff | Not feasible at all; he estimates would take about a year of work to get fully secure and compliant with privacy concerns + get approval for it; we only have a semester's worth of one class of time to get it done |
 | MyCap current functionality | Jeff + Marissa | MyCap has been out for about a year but hasn't been widely adopted yet; no demos available; some questions as to the customizability of the UI (it's ugly) |
+| Dev opportunities | All | None really; it's entirely developed at Vanderbilt; the goal of our project would be to get a specific instance up and running for Dr. Olson and aggresively look for bugs and report them |
 
 
 ## Action Items

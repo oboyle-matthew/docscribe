@@ -31,6 +31,9 @@
   },
   "jest": {
     "preset": "react-native",
-    "verbose": true
+    "verbose": true,
+    "testMatch": [
+      "**/*-test.js"
+    ]
   }
 }

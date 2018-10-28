@@ -34,9 +34,9 @@ const Pain = props => {
         optionTwo="No"
         style={{ marginBottom: '20%' }}
       />
-      <Text /> <Text />
+      <Text /><Text />
       <PickerQuestion question="Number of pills taken today" />
-      <Text /> <Text /> <Text /> <Text /> <Text />
+      <Text /><Text /><Text /><Text /><Text />
       <Button title="Continue" onPress={() => navigation.navigate('Mobility')} />
     </ScrollView>
   );

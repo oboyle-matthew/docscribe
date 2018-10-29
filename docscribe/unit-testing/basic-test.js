@@ -22,6 +22,10 @@ describe('<BinaryQuestion/>', () => {
     expect(pain).toMatchSnapshot();
   });
 
+  // If you want details on this I googled 'react test renderer docs' and used that as a starting point.
+  // This basically iterates through each Checkbox and presses it, then checks to see if the boolean values change
+  // I verified it's actually working by just removing the "not" and making sure it is actually getting proper
+  // values from the instance.
   it('Modifies values upon selection', () => {
     const inst = renderer.create(
       <BinaryQuestion
@@ -31,11 +35,11 @@ describe('<BinaryQuestion/>', () => {
         style={{ marginBottom: '20%' }}
       />
     );
-    const checkBoxes = inst.root.findAllByType(CheckBox);
+    const checkBoxes = inst.root.findAllByType(CheckBox); // .root lets you find all the nice info like subcomponents
 
     for (const box of checkBoxes) {
-      const one = inst.root.instance.state.oneChecked;
-      box.props.onPress();
+      const one = inst.root.instance.state.oneChecked; // .instance has the concrete info or something
+      box.props.onPress(); // apparently onpress is both a prop and a method so you can just...call it.
       expect(inst.root.instance.state.oneChecked).not.toBe(one);
     }
   });

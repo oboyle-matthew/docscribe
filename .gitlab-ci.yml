@@ -3,4 +3,6 @@ image: node:8.11.1
 all_tests:
   script:
    - npm install
-   - node ./test/Test.js
+   - cd docscribe
+   - npm install
+   - npm test

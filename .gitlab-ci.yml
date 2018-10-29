@@ -16,13 +16,13 @@ stages:
   - test
 
 
-all_tests:
+Test:
   stage: test
   tags:
     - node
-  before_script:
-    - yarn config set cache-folder .yarn
-    - yarn install
+  # before_script:
+  #   - yarn config set cache-folder .yarn
+  #   - yarn install
   script:
    - echo "Hello! I cannot make this work!"
    # - cd docscribe

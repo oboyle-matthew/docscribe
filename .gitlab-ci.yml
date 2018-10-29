@@ -12,12 +12,12 @@ cache:
 # Docker images come with yarn preinstalled
 before_script:
   - apt-get update -qq && apt-get install
-stages:
-  - test
+# stages:
+#   - test
 
 
 Test:
-  stage: test
+  # stage: test
   tags:
     - node
   # before_script:

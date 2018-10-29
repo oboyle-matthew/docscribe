@@ -2,16 +2,16 @@ image: node:8.11.1
 
 
 # Cache our stuff(?)
-cache:
-  paths:
-    - node_modules/
-    - .yarn
+# cache:
+#   paths:
+#     - node_modules/
+#     - .yarn
 
 # We tell GitLab to install all the packages
 # before running anything.
 # Docker images come with yarn preinstalled
-before_script:
-  - apt-get update -qq && apt-get install
+# before_script:
+#   - apt-get update -qq && apt-get install
 # stages:
 #   - test
 

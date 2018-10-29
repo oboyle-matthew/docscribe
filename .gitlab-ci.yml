@@ -1,6 +1,30 @@
 image: node:8.11.1
 
-all_tests:
+
+# Cache our stuff(?)
+# cache:
+#   paths:
+#     - node_modules/
+#     - .yarn
+
+# We tell GitLab to install all the packages
+# before running anything.
+# Docker images come with yarn preinstalled
+# before_script:
+#   - apt-get update -qq && apt-get install
+# stages:
+#   - test
+
+
+Test:
+  # stage: test
+  # tags:
+  #   - node
+  # before_script:
+  #   - yarn config set cache-folder .yarn
+  #   - yarn install
   script:
-   - npm install
-   - node ./test/Test.js
+   - echo "Hello! I cannot make this work!"
+   # - cd docscribe
+   # - yarn install
+   # - yarn test

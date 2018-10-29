@@ -1,9 +1,11 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { Button } from 'react-native';
 import { CheckBox, Slider } from 'react-native-elements';
 import BinaryQuestion from '../src/components/BinaryQuestion';
 import SliderQuestion from '../src/components/SliderQuestion';
+import FullNumberPicker from '../src/components/FullNumberPicker';
 
 // Basic test made! (Try changing option two to "maybe" and it will fail!)
 // Snapshots basically take a "picture" of your code (serialized I think) and then in future tests
@@ -63,5 +65,19 @@ describe('<SliderQuestion/>', () => {
     expect(inst.root.instance.state.answer).toBe(10);
     slider.props.onValueChange(2);
     expect(inst.root.instance.state.answer).toBe(2);
+  });
+});
+describe('<FullNumberPicker/>', () => {
+  it('Opens and closes the picker nicely', () => {
+    const inst = renderer.create(<FullNumberPicker />);
+    expect(inst.root.instance.state.showPicker).toBe(false);
+    const button = inst.root.findByType(Button);
+    expect(button.props.title).toBe('Choose a number');
+
+    button.props.onPress();
+    expect(inst.root.instance.state.showPicker).toBe(true);
+    const button2 = inst.root.findByType(Button);
+    button2.props.onPress();
+    expect(inst.root.instance.state.showPicker).toBe(false);
   });
 });

@@ -22,7 +22,8 @@
         "printWidth": 100
       }
     ],
-    "no-restricted-syntax": 0
+    "no-restricted-syntax": 0,
+    "no-dev-dependencies": 0
   },
   "plugins": [
     "prettier"

@@ -1,7 +1,7 @@
 image: node:8.11.1
 
 
-# And to cache them as well.
+# Cache our stuff(?)
 cache:
   paths:
     - node_modules/
@@ -19,7 +19,7 @@ stages:
 all_tests:
   stage: test
   tags:
-  - node
+    - node
   before_script:
     - yarn config set cache-folder .yarn
     - yarn install

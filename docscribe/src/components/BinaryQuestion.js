@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, View } from 'react-native';
 import { CheckBox } from 'react-native-elements';
+import AppStore from '../stores/AppStore';
 
 export default class BinaryQuestion extends React.Component {
   constructor(props) {
@@ -57,4 +58,6 @@ BinaryQuestion.propTypes = {
   question: PropTypes.string.isRequired,
   optionOne: PropTypes.string.isRequired,
   optionTwo: PropTypes.string.isRequired,
+  fb: PropTypes.string.isRequired,
+  app: PropTypes.instanceOf(AppStore).isRequired,
 };

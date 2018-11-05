@@ -3,9 +3,6 @@ import { StyleSheet, Text, ScrollView, View, Alert } from 'react-native';
 import { Button } from 'react-native-elements';
 import BinaryQuestion from './components/BinaryQuestion';
 import SliderQuestion from './components/SliderQuestion';
-import AppStore from './stores/AppStore';
-
-const app = new AppStore();
 
 const styles = StyleSheet.create({
   container: {
@@ -28,7 +25,6 @@ export default class Pain extends React.Component {
   submit() {
     const { navigation } = this.props;
     const app = navigation.getParam('app');
-    console.log(Object.keys(app.object));
     app.submitToFirebase();
     this.setState({ submitted: true });
   }

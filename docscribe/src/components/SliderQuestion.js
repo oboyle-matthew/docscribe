@@ -38,7 +38,7 @@ export default class SliderQuestion extends React.Component {
           step={step}
           minimumValue={min}
           maximumValue={max}
-          onValueChange={value => this.setState({ answer: value })}
+          onValueChange={value => this.valueChanged(value)}
           value={answer}
         />
         <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>

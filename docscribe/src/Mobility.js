@@ -68,7 +68,7 @@ export default class Pain extends React.Component {
             <SliderQuestion
               app={app}
               fb="mobility"
-              question={'\n\nPlease rate your average pain throughout the day: '}
+              question="Please rate your average pain throughout the day: "
               min={0}
               max={10}
               step={1}

@@ -28,7 +28,7 @@ const Pain = props => {
       <SliderQuestion
         fb="pain"
         app={app}
-        question={'\n\nPlease rate your average pain throughout the day: '}
+        question="Please rate your average pain throughout the day:"
         min={0}
         max={10}
         step={1}
@@ -40,7 +40,7 @@ const Pain = props => {
         optionOne="Yes"
         optionTwo="No"
       />
-      <PickerQuestion question="Number of pills taken today:" />
+      <PickerQuestion question="Number of oxycodone pills taken today:" />
       <Button
         rightIcon={{ name: 'navigate-next' }}
         backgroundColor="#1F96F4"

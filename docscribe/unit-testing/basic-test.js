@@ -95,4 +95,3 @@ describe('<PickerQuestion/>', () => {
     // expect(inst.root.instance.state.showPicker).toBe(false);
   });
 });
-

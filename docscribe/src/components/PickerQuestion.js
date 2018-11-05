@@ -8,7 +8,7 @@ export default class PickerQuestion extends Component {
     super(props);
     this.state = {
       chosen: '0',
-      numbers: ['0', '1', '2', '3', '4', '5 or more'],
+      numbers: ['0', '1', '2', '3', '4', '5+'],
     };
   }
 

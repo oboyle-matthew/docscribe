@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, ScrollView, Button } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
+import { Button } from 'react-native-elements';
 import TextQuestion from './components/TextQuestion';
 import SliderQuestion from './components/SliderQuestion';
 import BinaryQuestion from './components/BinaryQuestion';
@@ -34,7 +35,12 @@ const Pain = props => {
         style={{ marginBottom: '20%' }}
       />
       <PickerQuestion question="Number of pills taken today" />
-      <Button title="Continue" onPress={() => navigation.navigate('Mobility')} />
+      <Button
+        rightIcon={{ name: 'navigate-next' }}
+        backgroundColor="#1F96F4"
+        title="CONTINUE"
+        onPress={() => navigation.navigate('Mobility')}
+      />
     </ScrollView>
   );
 };

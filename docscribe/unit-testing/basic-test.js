@@ -8,7 +8,7 @@ import SliderQuestion from '../src/components/SliderQuestion';
 import FullNumberPicker from '../src/components/FullNumberPicker';
 
 test('adds 1 + 2 to equal 3', () => {
-  expect(1 + 3).toBe(3);
+  expect(1 + 2).toBe(3);
 });
 
 // Basic test made! (Try changing option two to "maybe" and it will fail!)

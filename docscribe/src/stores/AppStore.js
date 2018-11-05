@@ -27,7 +27,6 @@ export default class AppStore extends React.Component {
 
   updateFirebase(part, answer) {
     this.object[part] = answer;
-    console.log(this.object);
   }
 
   constructor() {
@@ -36,11 +35,9 @@ export default class AppStore extends React.Component {
     this.listRef = this.app.database().ref("info");
     this.snap = {};
     this.list = [];
-    console.log(this.object);
     this.object = (this.object === undefined) ?
       {"comment": null, "crutches": null, "pain": null, "mobility": null, "pills": null, "prescription": null} :
       this.object;
-    console.log(this.object);
     this.update();
   }
 

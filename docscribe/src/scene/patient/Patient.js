@@ -1,8 +1,28 @@
-import React from 'react';
-import { Text } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
+import Pain from './scene/Pain';
+import Mobility from './scene/Mobility';
 
-export default class Patient extends React.Component {
-  render() {
-    return <Text>Patient</Text>;
+const App = createStackNavigator(
+  {
+    Pain: {
+      screen: Pain,
+      navigationOptions: {
+        title: 'Pain',
+      },
+    },
+    Mobility: {
+      screen: Mobility,
+      navigationOptions: {
+        title: 'Mobility',
+      },
+    },
+  },
+  {
+    initialRouteName: 'Pain', // first page to be shown
+    transitionConfig: () => ({
+      isModal: true,
+    }),
   }
-}
+);
+
+export default App;

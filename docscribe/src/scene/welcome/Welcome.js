@@ -1,8 +1,3 @@
-import React from 'react';
-import { Text } from 'react-native';
+import Patient from '../patient/Patient';
 
-export default class Welcome extends React.Component {
-  render() {
-    return <Text>Welcome</Text>;
-  }
-}
+export default Patient;

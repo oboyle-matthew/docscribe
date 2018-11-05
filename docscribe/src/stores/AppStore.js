@@ -9,7 +9,7 @@ var firebaseConfig = {
 };
 
 
-const app = firebase.initializeApp(firebaseConfig);
+const app = (firebase.apps.length) ? firebase.apps[0] : firebase.initializeApp(firebaseConfig);
 
 export default class AppStore extends React.Component {
 
@@ -27,6 +27,7 @@ export default class AppStore extends React.Component {
 
   updateFirebase(part, answer) {
     this.object[part] = answer;
+    console.log(this.object);
   }
 
   constructor() {

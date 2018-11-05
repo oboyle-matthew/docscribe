@@ -25,8 +25,6 @@ const Pain = props => {
         min={0}
         max={10}
         step={1}
-        minLabel="No pain at all"
-        maxLabel="Pain as bad as it possibly could be"
       />
       <BinaryQuestion
         question="Did you adhere to the prescribed usage guidelines today?"

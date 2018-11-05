@@ -32,7 +32,6 @@ const Pain = props => {
         question="Did you adhere to the prescribed usage guidelines today?"
         optionOne="Yes"
         optionTwo="No"
-        style={{ marginBottom: '20%' }}
       />
       <PickerQuestion question="Number of pills taken today" />
       <Button

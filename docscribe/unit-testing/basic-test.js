@@ -1,11 +1,12 @@
 /* eslint-disable */
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { Button } from 'react-native';
+import { Button , TextInput } from 'react-native';
 import { CheckBox, Slider } from 'react-native-elements';
 import BinaryQuestion from '../src/components/BinaryQuestion';
 import SliderQuestion from '../src/components/SliderQuestion';
 import PickerQuestion from '../src/components/PickerQuestion';
+import TextQuestion from '../src/components/TextQuestion';
 import AppStore from '../src/stores/AppStore';
 
 const app = new AppStore();
@@ -95,4 +96,15 @@ describe('<PickerQuestion/>', () => {
     // expect(inst.root.instance.state.showPicker).toBe(false);
   });
 });
-
+describe('<TextQuestion/>', () => {
+  it('Stores text input', () => {
+    const inst = renderer.create(
+      <TextQuestion fb="extra" app={app} question="Is there anything else you would like us to know?" />
+    );
+    expect(inst.root.instance.state.answer).toBe("");
+    let input = inst.root.findByType(TextInput);
+    expect(input).toBeDefined();
+    input.props.onChangeText('My hip hurts');
+    expect(inst.root.instance.state.answer).toBe("My hip hurts");
+  });
+});

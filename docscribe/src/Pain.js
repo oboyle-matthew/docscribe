@@ -5,7 +5,7 @@ import TextQuestion from './components/TextQuestion';
 import SliderQuestion from './components/SliderQuestion';
 import BinaryQuestion from './components/BinaryQuestion';
 import PickerQuestion from './components/PickerQuestion';
-import AppStore from "./stores/AppStore";
+import AppStore from './stores/AppStore';
 
 const app = new AppStore();
 
@@ -42,8 +42,13 @@ const Pain = props => {
         optionTwo="No"
         style={{ marginBottom: '20%' }}
       />
-      <PickerQuestion fb="pills" app={app} question="Number of pills taken today" />
-      <Button title="Continue" onPress={() => navigation.navigate('Mobility', {app})} />
+      <PickerQuestion question="Number of pills taken today:" />
+      <Button
+        rightIcon={{ name: 'navigate-next' }}
+        backgroundColor="#1F96F4"
+        title="CONTINUE"
+        onPress={() => navigation.navigate('Mobility')}
+      />
     </ScrollView>
   );
 };

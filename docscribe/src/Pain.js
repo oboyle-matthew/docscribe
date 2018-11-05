@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, ScrollView, Button } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
+import { Button } from 'react-native-elements';
 import TextQuestion from './components/TextQuestion';
 import SliderQuestion from './components/SliderQuestion';
 import BinaryQuestion from './components/BinaryQuestion';
@@ -13,8 +14,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
-    justifyContent: 'center',
   },
 });
 
@@ -30,9 +32,6 @@ const Pain = props => {
         min={0}
         max={10}
         step={1}
-        minLabel="No pain at all"
-        maxLabel="Pain as bad as it possibly could be"
-        style={{ marginBottom: '70%' }}
       />
       <BinaryQuestion
         fb="prescription"
@@ -40,9 +39,8 @@ const Pain = props => {
         question="Did you adhere to the prescribed usage guidelines today?"
         optionOne="Yes"
         optionTwo="No"
-        style={{ marginBottom: '20%' }}
       />
-      <PickerQuestion question="Number of pills taken today:" />
+      <PickerQuestion question="Number of pills taken today" />
       <Button
         rightIcon={{ name: 'navigate-next' }}
         backgroundColor="#1F96F4"

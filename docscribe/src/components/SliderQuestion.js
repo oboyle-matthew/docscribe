@@ -5,7 +5,6 @@ import { Slider } from 'react-native-elements';
 import happyFace from '../../assets/happy.png';
 import sadFace from '../../assets/sad.png';
 
-
 export default class SliderQuestion extends React.Component {
   constructor(props) {
     super(props);
@@ -29,7 +28,7 @@ export default class SliderQuestion extends React.Component {
   }
 
   render() {
-    const { question, min, max, step, minLabel, maxLabel } = this.props;
+    const { question, min, max, step } = this.props;
     const { answer } = this.state;
 
     return (
@@ -39,7 +38,7 @@ export default class SliderQuestion extends React.Component {
           step={step}
           minimumValue={min}
           maximumValue={max}
-          onValueChange={value => this.valueChanged(value)}
+          onValueChange={value => this.setState({ answer: value })}
           value={answer}
         />
         <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -65,6 +64,4 @@ SliderQuestion.propTypes = {
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   step: PropTypes.number.isRequired,
-  minLabel: PropTypes.string.isRequired,
-  maxLabel: PropTypes.string.isRequired,
 };

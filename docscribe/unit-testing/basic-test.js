@@ -1,4 +1,4 @@
-import 'react-native';
+/* eslint-disable */
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { Button } from 'react-native';
@@ -77,7 +77,12 @@ describe('<SliderQuestion/>', () => {
     expect(inst.root.instance.state.answer).toBe(2);
   });
 });
+<<<<<<< HEAD
 describe('<PickerQuestion/>', () => {
+=======
+
+describe('<FullNumberPicker/>', () => {
+>>>>>>> 2beaa895a14181be3d822496019b70ba371f8643
   it('Opens and closes the picker nicely', () => {
     const inst = renderer.create(
       <PickerQuestion fb="pills" app={app} question="Number of pills taken today" />

@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, Image } from 'react-native';
 import { Slider } from 'react-native-elements';
-
-import sadFace from '../../assets/sad.png';
 import happyFace from '../../assets/happy.png';
+import sadFace from '../../assets/sad.png';
+
 
 export default class SliderQuestion extends React.Component {
   constructor(props) {
@@ -29,7 +29,7 @@ export default class SliderQuestion extends React.Component {
   }
 
   render() {
-    const { question, min, max, step } = this.props;
+    const { question, min, max, step, minLabel, maxLabel } = this.props;
     const { answer } = this.state;
 
     return (
@@ -65,4 +65,6 @@ SliderQuestion.propTypes = {
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   step: PropTypes.number.isRequired,
+  minLabel: PropTypes.string.isRequired,
+  maxLabel: PropTypes.string.isRequired,
 };

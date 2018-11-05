@@ -10,6 +10,7 @@ import AppStore from '../src/stores/AppStore';
 
 const app = new AppStore();
 
+afterAll(() => setTimeout(() => process.exit(), 1000));
 // Basic test made! (Try changing option two to "maybe" and it will fail!)
 // Snapshots basically take a "picture" of your code (serialized I think) and then in future tests
 // You can compare the component to the original snapshot. "npm test -- -u" will overwrite the snapshot for a test.

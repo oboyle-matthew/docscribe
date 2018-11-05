@@ -77,12 +77,8 @@ describe('<SliderQuestion/>', () => {
     expect(inst.root.instance.state.answer).toBe(2);
   });
 });
-<<<<<<< HEAD
-describe('<PickerQuestion/>', () => {
-=======
 
-describe('<FullNumberPicker/>', () => {
->>>>>>> 2beaa895a14181be3d822496019b70ba371f8643
+describe('<PickerQuestion/>', () => {
   it('Opens and closes the picker nicely', () => {
     const inst = renderer.create(
       <PickerQuestion fb="pills" app={app} question="Number of pills taken today" />

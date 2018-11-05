@@ -38,7 +38,7 @@ export default class PickerQuestion extends Component {
   }
 
   render() {
-    const { question } = this.props;
+    const { question, app, fb } = this.props;
     const { numbers, chosen } = this.state;
     return (
       <View style={{ display: 'flex', flexDirection: 'row' }}>
@@ -50,6 +50,7 @@ export default class PickerQuestion extends Component {
           }}
           items={numbers}
           onValueChange={value => {
+            app.updateFirebase(fb, value);
             this.setState({
               chosen: value,
             });

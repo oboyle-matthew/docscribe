@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, View } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import { Slider } from 'react-native-elements';
+import happyFace from '../../assets/happy.png';
+import sadFace from '../../assets/sad.png';
 
 export default class SliderQuestion extends React.Component {
   constructor(props) {
@@ -18,8 +20,15 @@ export default class SliderQuestion extends React.Component {
     });
   }
 
+  valueChanged(value) {
+    this.setState({
+      answer: value,
+    });
+    this.props.app.updateFirebase(this.props.fb, value);
+  }
+
   render() {
-    const { question, min, max, step, minLabel, maxLabel } = this.props;
+    const { question, min, max, step } = this.props;
     const { answer } = this.state;
 
     return (
@@ -33,9 +42,17 @@ export default class SliderQuestion extends React.Component {
           value={answer}
         />
         <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-          <Text style={{ width: 100, height: 100, textAlign: 'left' }}>{minLabel}</Text>
-          <Text style={{ width: 100, height: 100, textAlign: 'center' }}>{answer}</Text>
-          <Text style={{ width: 100, height: 100, textAlign: 'right' }}>{maxLabel}</Text>
+          <Image
+            source={happyFace}
+            style={{ width: 50, height: 50 }}
+            accessibilityLabel="Happy face."
+          />
+          <Text>{answer}</Text>
+          <Image
+            source={sadFace}
+            style={{ width: 50, height: 50 }}
+            accessibilityLabel="Sad face."
+          />
         </View>
       </View>
     );
@@ -47,6 +64,4 @@ SliderQuestion.propTypes = {
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   step: PropTypes.number.isRequired,
-  minLabel: PropTypes.string.isRequired,
-  maxLabel: PropTypes.string.isRequired,
 };

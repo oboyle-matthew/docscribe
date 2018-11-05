@@ -32,14 +32,14 @@ class PickerQuestion extends Component {
             <Button
               style={{ width: '50%' }}
               title="Cancel"
-              onPress={() => this.setState({ showPicker: false })}
+              onPress={this.setState({ showPicker: false })}
             />
           </View>
         ) : (
           <Button
             style={{ width: '50%' }}
             title="Choose a number"
-            onPress={() => this.setState({ showPicker: true })}
+            onPress={this.setState({ showPicker: true })}
           />
         )}
       </View>

@@ -24,7 +24,7 @@ Test:
   #   - yarn config set cache-folder .yarn
   #   - yarn install
   script:
-   - echo "Hello! I cannot make this work!"
-   # - cd docscribe
-   # - yarn install
-   # - yarn test
+   # - echo "Hello! I cannot make this work!"
+   - cd docscribe
+   - npm install
+   - npm test

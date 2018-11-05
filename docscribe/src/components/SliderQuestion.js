@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, Image } from 'react-native';
 import { Slider } from 'react-native-elements';
-
-import sadFace from '../../assets/sad.png';
 import happyFace from '../../assets/happy.png';
+import sadFace from '../../assets/sad.png';
+
 
 export default class SliderQuestion extends React.Component {
   constructor(props) {
@@ -21,8 +21,15 @@ export default class SliderQuestion extends React.Component {
     });
   }
 
+  valueChanged(value) {
+    this.setState({
+      answer: value,
+    });
+    this.props.app.updateFirebase(this.props.fb, value);
+  }
+
   render() {
-    const { question, min, max, step } = this.props;
+    const { question, min, max, step, minLabel, maxLabel } = this.props;
     const { answer } = this.state;
 
     return (
@@ -32,7 +39,7 @@ export default class SliderQuestion extends React.Component {
           step={step}
           minimumValue={min}
           maximumValue={max}
-          onValueChange={value => this.setState({ answer: value })}
+          onValueChange={value => this.valueChanged(value)}
           value={answer}
         />
         <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -58,4 +65,6 @@ SliderQuestion.propTypes = {
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   step: PropTypes.number.isRequired,
+  minLabel: PropTypes.string.isRequired,
+  maxLabel: PropTypes.string.isRequired,
 };

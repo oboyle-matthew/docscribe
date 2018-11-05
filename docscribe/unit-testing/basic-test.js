@@ -7,10 +7,6 @@ import BinaryQuestion from '../src/components/BinaryQuestion';
 import SliderQuestion from '../src/components/SliderQuestion';
 import FullNumberPicker from '../src/components/FullNumberPicker';
 
-test('adds 1 + 2 to equal 3', () => {
-  expect(1 + 2).toBe(3);
-});
-
 // Basic test made! (Try changing option two to "maybe" and it will fail!)
 // Snapshots basically take a "picture" of your code (serialized I think) and then in future tests
 // You can compare the component to the original snapshot. "npm test -- -u" will overwrite the snapshot for a test.

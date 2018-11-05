@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, ScrollView, Button } from 'react-native';
+import { StyleSheet, ScrollView, Button } from 'react-native';
 import TextQuestion from './components/TextQuestion';
 import SliderQuestion from './components/SliderQuestion';
 import BinaryQuestion from './components/BinaryQuestion';
@@ -10,8 +10,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
-    justifyContent: 'center',
   },
 });
 
@@ -32,9 +33,7 @@ const Pain = props => {
         optionTwo="No"
         style={{ marginBottom: '20%' }}
       />
-      <Text /><Text />
       <PickerQuestion question="Number of pills taken today" />
-      <Text /><Text /><Text /><Text /><Text />
       <Button title="Continue" onPress={() => navigation.navigate('Mobility')} />
     </ScrollView>
   );

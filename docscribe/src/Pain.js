@@ -40,7 +40,7 @@ const Pain = props => {
         optionOne="Yes"
         optionTwo="No"
       />
-      <PickerQuestion question="Number of pills taken today" />
+      <PickerQuestion question="Number of pills taken today:" />
       <Button
         rightIcon={{ name: 'navigate-next' }}
         backgroundColor="#1F96F4"

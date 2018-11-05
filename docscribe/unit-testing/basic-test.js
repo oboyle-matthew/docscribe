@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { Button } from 'react-native';
@@ -66,6 +67,7 @@ describe('<SliderQuestion/>', () => {
     expect(inst.root.instance.state.answer).toBe(2);
   });
 });
+
 describe('<FullNumberPicker/>', () => {
   it('Opens and closes the picker nicely', () => {
     const inst = renderer.create(<FullNumberPicker />);

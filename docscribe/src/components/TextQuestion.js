@@ -11,11 +11,13 @@ export default class TextQuestion extends React.Component {
   }
 
   textChange = newText => {
+    this.props.app.updateFirebase(this.props.fb, newText);
+    // this.props.app[this.props.fb] = newText;
     this.setState({ answer: newText });
   };
 
   render() {
-    const { question } = this.props;
+    const { question, fb, app} = this.props;
     const { answer } = this.state;
     return (
       <View style={{ display: 'flex', flexDirection: 'row' }}>

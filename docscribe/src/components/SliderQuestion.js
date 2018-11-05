@@ -18,6 +18,13 @@ export default class SliderQuestion extends React.Component {
     });
   }
 
+  valueChanged(value) {
+    this.setState({
+      answer: value,
+    });
+    this.props.app.updateFirebase(this.props.fb, value);
+  }
+
   render() {
     const { question, min, max, step, minLabel, maxLabel } = this.props;
     const { answer } = this.state;
@@ -29,7 +36,7 @@ export default class SliderQuestion extends React.Component {
           step={step}
           minimumValue={min}
           maximumValue={max}
-          onValueChange={value => this.setState({ answer: value })}
+          onValueChange={value => this.valueChanged(value)}
           value={answer}
         />
         <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>

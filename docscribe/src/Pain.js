@@ -5,6 +5,9 @@ import TextQuestion from './components/TextQuestion';
 import SliderQuestion from './components/SliderQuestion';
 import BinaryQuestion from './components/BinaryQuestion';
 import PickerQuestion from './components/PickerQuestion';
+import AppStore from "./stores/AppStore";
+
+const app = new AppStore();
 
 const styles = StyleSheet.create({
   container: {
@@ -19,8 +22,10 @@ const Pain = props => {
   const { navigation } = props;
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <TextQuestion question="Any comments for today?" />
+      <TextQuestion fb="comment" app={app} question="Any comments for today?" />
       <SliderQuestion
+        fb="pain"
+        app={app}
         question={'\n\nPlease rate your average pain throughout the day: '}
         min={0}
         max={10}
@@ -29,15 +34,17 @@ const Pain = props => {
         maxLabel="Pain as bad as it possibly could be"
       />
       <BinaryQuestion
+        fb="prescription"
+        app={app}
         question="Did you adhere to the prescribed usage guidelines today?"
         optionOne="Yes"
         optionTwo="No"
         style={{ marginBottom: '20%' }}
       />
-      <Text /><Text />
-      <PickerQuestion question="Number of pills taken today" />
-      <Text /><Text /><Text /><Text /><Text />
-      <Button title="Continue" onPress={() => navigation.navigate('Mobility')} />
+      <Text /> <Text />
+      <PickerQuestion fb="pills" app={app} question="Number of pills taken today" />
+      <Text /> <Text /> <Text /> <Text /> <Text />
+      <Button title="Continue" onPress={() => navigation.navigate('Mobility', {app})} />
     </ScrollView>
   );
 };

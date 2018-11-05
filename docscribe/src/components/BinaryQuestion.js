@@ -13,6 +13,7 @@ export default class BinaryQuestion extends React.Component {
   }
 
   checkOne = () => {
+    this.props.app.updateFirebase(this.props.fb, true);
     const { oneChecked, twoChecked } = this.state;
     if (!oneChecked && twoChecked) {
       this.setState({
@@ -25,6 +26,7 @@ export default class BinaryQuestion extends React.Component {
   };
 
   checkTwo = () => {
+    this.props.app.updateFirebase(this.props.fb, false);
     const { oneChecked, twoChecked } = this.state;
     if (!twoChecked && oneChecked) {
       this.setState({

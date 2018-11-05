@@ -1,6 +1,6 @@
 image: node:8.11.1
 
-Test:
+frontend_test:
   script:
    - cd docscribe
    - npm install

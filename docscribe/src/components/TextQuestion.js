@@ -17,7 +17,7 @@ export default class TextQuestion extends React.Component {
   };
 
   render() {
-    const { question, fb, app} = this.props;
+    const { question, fb, app } = this.props;
     const { answer } = this.state;
     return (
       <View style={{ display: 'flex', flexDirection: 'row' }}>

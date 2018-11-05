@@ -8,7 +8,7 @@ export default class BinaryQuestion extends React.Component {
     super(props);
     this.state = {
       oneChecked: false,
-      twoChecked: false,
+      twoChecked: false
     };
   }
 

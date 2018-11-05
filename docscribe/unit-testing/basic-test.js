@@ -5,7 +5,10 @@ import { Button } from 'react-native';
 import { CheckBox, Slider } from 'react-native-elements';
 import BinaryQuestion from '../src/components/BinaryQuestion';
 import SliderQuestion from '../src/components/SliderQuestion';
-import FullNumberPicker from '../src/components/FullNumberPicker';
+import PickerQuestion from '../src/components/PickerQuestion';
+import AppStore from '../src/stores/AppStore';
+
+const app = new AppStore();
 
 // Basic test made! (Try changing option two to "maybe" and it will fail!)
 // Snapshots basically take a "picture" of your code (serialized I think) and then in future tests
@@ -15,6 +18,8 @@ describe('<BinaryQuestion/>', () => {
     const pain = renderer
       .create(
         <BinaryQuestion
+          fb="prescription"
+          app={app}
           question="Did you adhere to the prescribed usage guidelines today?"
           optionOne="Yes"
           optionTwo="No"
@@ -32,6 +37,8 @@ describe('<BinaryQuestion/>', () => {
   it('Modifies values upon selection', () => {
     const inst = renderer.create(
       <BinaryQuestion
+        fb="prescription"
+        app={app}
         question="Did you adhere to the prescribed usage guidelines today?"
         optionOne="Yes"
         optionTwo="No"
@@ -52,32 +59,38 @@ describe('<SliderQuestion/>', () => {
   it('Changes values when the slider slides', () => {
     const inst = renderer.create(
       <SliderQuestion
-        question="On a scale of 1 to 10 how much do you love Professor Duvall?"
+        fb="pain"
+        app={app}
+        question={'\n\nPlease rate your average pain throughout the day: '}
         min={0}
-        max={20}
+        max={10}
         step={1}
-        minLabel="He's the worst"
-        maxLabel="I love him he's the best"
+        minLabel="No pain at all"
+        maxLabel="Pain as bad as it possibly could be"
       />
     );
     const slider = inst.root.findByType(Slider);
 
-    expect(inst.root.instance.state.answer).toBe(10);
+    expect(inst.root.instance.state.answer).toBe(5);
     slider.props.onValueChange(2);
     expect(inst.root.instance.state.answer).toBe(2);
   });
 });
-describe('<FullNumberPicker/>', () => {
+describe('<PickerQuestion/>', () => {
   it('Opens and closes the picker nicely', () => {
-    const inst = renderer.create(<FullNumberPicker />);
-    expect(inst.root.instance.state.showPicker).toBe(false);
-    const button = inst.root.findByType(Button);
-    expect(button.props.title).toBe('Choose a number');
-
-    button.props.onPress();
-    expect(inst.root.instance.state.showPicker).toBe(true);
-    const button2 = inst.root.findByType(Button);
-    button2.props.onPress();
-    expect(inst.root.instance.state.showPicker).toBe(false);
+    const inst = renderer.create(
+      <PickerQuestion fb="pills" app={app} question="Number of pills taken today" />
+    );
+    expect(inst.root.instance.state.chosen).toBe(undefined);
+    // expect(inst.root.instance.state.showPicker).toBe(false);
+    // const button = inst.root.findByType(Button);
+    // expect(button.props.title).toBe('Choose a number');
+    //
+    // button.props.onPress();
+    // expect(inst.root.instance.state.showPicker).toBe(true);
+    // const button2 = inst.root.findByType(Button);
+    // button2.props.onPress();
+    // expect(inst.root.instance.state.showPicker).toBe(false);
   });
 });
+

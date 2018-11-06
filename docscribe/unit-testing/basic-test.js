@@ -3,10 +3,10 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { Button , TextInput } from 'react-native';
 import { CheckBox, Slider } from 'react-native-elements';
-import BinaryQuestion from '../src/components/BinaryQuestion';
-import SliderQuestion from '../src/components/SliderQuestion';
-import PickerQuestion from '../src/components/PickerQuestion';
-import TextQuestion from '../src/components/TextQuestion';
+import BinaryQuestion from '../src/scene/patient/components/BinaryQuestion';
+import SliderQuestion from '../src/scene/patient/components/SliderQuestion';
+import PickerQuestion from '../src/scene/patient/components/PickerQuestion';
+import TextQuestion from '../src/scene/patient/components/TextQuestion';
 import AppStore from '../src/stores/AppStore';
 
 const app = new AppStore();

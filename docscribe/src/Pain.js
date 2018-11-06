@@ -45,7 +45,7 @@ const Pain = props => {
         rightIcon={{ name: 'navigate-next' }}
         backgroundColor="#1F96F4"
         title="CONTINUE"
-        onPress={() => navigation.navigate('Mobility', {app})}
+        onPress={() => navigation.navigate('Mobility', { app })}
       />
     </ScrollView>
   );

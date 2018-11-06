@@ -8,44 +8,25 @@ var firebaseConfig = {
   storageBucket: "docscribe-9d421.appspot.com",
 };
 
-
 const app = (firebase.apps.length) ? firebase.apps[0] : firebase.initializeApp(firebaseConfig);
 
 export default class AppStore extends React.Component {
 
-  submitToFirebase = () => {
+  submitToFirebase = (user) => {
+    this.listRef = this.app.database().ref("users/" + user.split(/@.+.com/)[0].replace(".", "%24"));
     this.listRef.push(this.object);
   };
 
-  deleteTodo(item) {
-    Object.keys(this.snap).forEach(key => {
-      if (this.snap[key] === item) {
-        this.listRef.child(key).remove();
-      }
-    })
-  }
-
   updateFirebase(part, answer) {
-    this.object[part] = answer;
     console.log(this.object);
+    this.object[part] = answer;
   }
 
   constructor() {
     super();
     this.app = app;
-    this.listRef = this.app.database().ref("info");
-    this.snap = {};
-    this.list = [];
     this.object = (this.object === undefined) ?
       {"comment": null, "crutches": null, "pain": null, "mobility": null, "pills": null, "prescription": null} :
       this.object;
-    this.update();
-  }
-
-  update() {
-    this.listRef.on("value", snap => {
-      this.list = Object.keys(snap.toJSON()).map(key => snap.toJSON()[key]);
-      this.snap = snap.toJSON();
-    });
   }
 }

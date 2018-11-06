@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView, Text } from 'react-native';
 import { Button } from 'react-native-elements';
 import TextQuestion from '../components/TextQuestion';
 import SliderQuestion from '../components/SliderQuestion';
 import BinaryQuestion from '../components/BinaryQuestion';
 import PickerQuestion from '../components/PickerQuestion';
-import AppStore from '../../../stores/AppStore';
-
-const app = new AppStore();
 
 const styles = StyleSheet.create({
   container: {
@@ -22,8 +19,11 @@ const styles = StyleSheet.create({
 
 const Pain = props => {
   const { navigation } = props;
+  const app = navigation.getParam('app');
+  const user = navigation.getParam('user');
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <Text>User: {user}</Text>
       <TextQuestion fb="comment" app={app} question="Any comments for today?" />
       <SliderQuestion
         fb="pain"
@@ -45,7 +45,7 @@ const Pain = props => {
         rightIcon={{ name: 'navigate-next' }}
         backgroundColor="#1F96F4"
         title="CONTINUE"
-        onPress={() => navigation.navigate('Mobility', {app})}
+        onPress={() => navigation.navigate('Mobility', { app: app, user: user })}
       />
     </ScrollView>
   );

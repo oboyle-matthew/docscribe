@@ -1,12 +1,13 @@
 import { createSwitchNavigator } from 'react-navigation';
 
-import SignUp from '../auth/SignUp';
-import Login from '../auth/Login';
+import SignUp from './SignUp';
+import Login from './Login';
 import Patient from '../patient/Patient';
 import Pain from '../patient/scene/Pain';
 import Mobility from '../patient/scene/Mobility';
 
-const Welcome = createSwitchNavigator(
+// create our app's navigation stack
+const App = createSwitchNavigator(
   {
     SignUp,
     Login,
@@ -19,4 +20,4 @@ const Welcome = createSwitchNavigator(
   }
 )
 
-export default Welcome;
+export default App;

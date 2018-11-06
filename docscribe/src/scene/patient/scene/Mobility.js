@@ -25,7 +25,7 @@ export default class Pain extends React.Component {
   submit() {
     const { navigation } = this.props;
     const app = navigation.getParam('app');
-    app.submitToFirebase();
+    app.submitToFirebase(this.user);
     this.setState({ submitted: true });
   }
 
@@ -40,6 +40,7 @@ export default class Pain extends React.Component {
     const { submitted } = this.state;
     const { navigation } = this.props;
     const app = navigation.getParam('app');
+    this.user = navigation.getParam('user');
 
     return (
       <ScrollView contentContainerStyle={styles.container}>
@@ -49,11 +50,17 @@ export default class Pain extends React.Component {
             <Button
               style={{ backgroundColor: 'red' }}
               title="Submit another form"
-              onPress={() => this.setState({ submitted: false })}
+              onPress={() => navigation.navigate('Pain', { app: app, user: this.user })}
             />
           </View>
         ) : (
           <Fragment>
+            <Text>{this.user}</Text>
+            <Button
+              backgroundColor="#1F96F4"
+              title="BACK"
+              onPress={() => navigation.navigate('Pain', { app })}
+            />
             <BinaryQuestion
               fb="crutches"
               app={app}

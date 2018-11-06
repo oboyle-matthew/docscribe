@@ -59,5 +59,5 @@ BinaryQuestion.propTypes = {
   optionOne: PropTypes.string.isRequired,
   optionTwo: PropTypes.string.isRequired,
   fb: PropTypes.string.isRequired,
-  app: PropTypes.instanceOf(AppStore).isRequired,
+  // app: PropTypes.instanceOf(AppStore).isRequired,
 };

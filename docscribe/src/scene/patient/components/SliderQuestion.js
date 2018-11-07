@@ -4,32 +4,32 @@ import { Text, View, Image } from 'react-native';
 import { Slider } from 'react-native-elements';
 import happyFace from '../../../../assets/happy.png';
 import sadFace from '../../../../assets/sad.png';
+import AppStore from '../../../stores/AppStore';
 
 export default class SliderQuestion extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      answer: -1,
+      answer: 0
     };
   }
 
   componentDidMount() {
-    const { max, min } = this.props;
-    this.setState({
-      answer: (max + min) / 2,
-    });
+    const { max, min, app, fb } = this.props;
+    if (app.object[fb] === null) {
+      app.object[fb] = (max + min) / 2;
+    }
   }
 
   valueChanged(value) {
-    this.setState({
-      answer: value,
-    });
     this.props.app.updateFirebase(this.props.fb, value);
+    this.setState({
+      answer: value
+    })
   }
 
   render() {
-    const { question, min, max, step } = this.props;
-    const { answer } = this.state;
+    const { question, min, max, step, app, fb } = this.props;
 
     return (
       <View>
@@ -39,7 +39,7 @@ export default class SliderQuestion extends React.Component {
           minimumValue={min}
           maximumValue={max}
           onValueChange={value => this.valueChanged(value)}
-          value={answer}
+          value={app.object[fb] === null ? (min + max) / 2 : app.object[fb]}
         />
         <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
           <Image
@@ -47,7 +47,7 @@ export default class SliderQuestion extends React.Component {
             style={{ width: 50, height: 50 }}
             accessibilityLabel="Happy face."
           />
-          <Text>{answer}</Text>
+          <Text>{app.object[fb] === null ? (min + max) / 2 : app.object[fb]}</Text>
           <Image
             source={sadFace}
             style={{ width: 50, height: 50 }}
@@ -64,4 +64,6 @@ SliderQuestion.propTypes = {
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   step: PropTypes.number.isRequired,
+  fb: PropTypes.string.isRequired,
+  app: PropTypes.instanceOf(AppStore).isRequired,
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, ScrollView, Text } from 'react-native';
+import { StyleSheet, ScrollView, Text, View } from 'react-native';
 import { Button } from 'react-native-elements';
 import TextQuestion from '../components/TextQuestion';
 import SliderQuestion from '../components/SliderQuestion';
@@ -17,44 +17,97 @@ const styles = StyleSheet.create({
   },
 });
 
-const Pain = props => {
-  const { navigation } = props;
-  const app = navigation.getParam('app');
-  const user = navigation.getParam('user');
-  return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text>User: {user}</Text>
-      <TextQuestion fb="comment" app={app} question="Any comments for today?" />
-      <SliderQuestion
-        fb="pain"
-        app={app}
-        question={'\n\nPlease rate your average pain throughout the day: '}
-        min={0}
-        max={10}
-        step={1}
-      />
-      <BinaryQuestion
-        fb="prescription"
-        app={app}
-        question="Did you adhere to the prescribed usage guidelines today?"
-        optionOne="Yes"
-        optionTwo="No"
-      />
-      <PickerQuestion app={app} fb="pills" question="Number of pills taken today" />
-      <Button
-        rightIcon={{ name: 'navigate-next' }}
-        backgroundColor="#1F96F4"
-        title="CONTINUE"
-        onPress={() => navigation.navigate('Mobility', { app: app, user: user })}
-      />
-    </ScrollView>
-  );
-};
+export default class Pain extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      today: '',
+    };
+  }
+
+  componentDidMount() {
+    const { navigation } = this.props;
+    const app = navigation.getParam('app');
+    this.setState({
+      today: app.getCurrentDate(),
+    });
+  }
+
+  incrementDate() {
+    const { navigation } = this.props;
+    const app = navigation.getParam('app');
+    app.incrementDate();
+    this.setState({
+      today: app.getCurrentDate(),
+    });
+  }
+
+  decrementDate() {
+    const { navigation } = this.props;
+    const app = navigation.getParam('app');
+    app.decrementDate();
+    this.setState({
+      today: app.getCurrentDate(),
+    });
+  }
+
+  render() {
+    const { navigation } = this.props;
+    const app = navigation.getParam('app');
+    console.log(app.user);
+    return (
+      <ScrollView contentContainerStyle={styles.container}>
+        <Button
+          style={{ backgroundColor: 'red' }}
+          title="HOME"
+          onPress={() => navigation.navigate('Login')}
+        />
+        <View style={{ flexDirection: 'row' }}>
+          <Button
+            style={{ backgroundColor: 'red' }}
+            title="<="
+            onPress={() => this.decrementDate()}
+          />
+          <View style={{ flexDirection: 'column' }}>
+            <Text>{app.user}</Text>
+            <Text>{this.state.today}</Text>
+          </View>
+          <Button
+            style={{ backgroundColor: 'red' }}
+            title="=>"
+            onPress={() => this.incrementDate()}
+          />
+        </View>
+        <TextQuestion fb="comment" app={app} question="Any comments for today?"/>
+        <SliderQuestion
+          fb="pain"
+          app={app}
+          question={'\n\nPlease rate your average pain throughout the day: '}
+          min={0}
+          max={10}
+          step={1}
+        />
+        <BinaryQuestion
+          fb="prescription"
+          app={app}
+          question="Did you adhere to the prescribed usage guidelines today?"
+          optionOne="Yes"
+          optionTwo="No"
+        />
+        <PickerQuestion app={app} fb="pills" question="Number of pills taken today"/>
+        <Button
+          rightIcon={{name: 'navigate-next'}}
+          backgroundColor="#1F96F4"
+          title="CONTINUE"
+          onPress={() => navigation.navigate('Mobility', { app })}
+        />
+      </ScrollView>
+    );
+  }
+}
 
 Pain.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func,
   }).isRequired,
-};
-
-export default Pain;
+}

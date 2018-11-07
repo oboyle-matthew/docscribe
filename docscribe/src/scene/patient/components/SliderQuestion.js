@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, Image } from 'react-native';
 import { Slider } from 'react-native-elements';
-import happyFace from '../../../../assets/happy.png';
-import sadFace from '../../../../assets/sad.png';
+import happyFace from '../../../../assets/happy2.png';
+import sadFace from '../../../../assets/sad2.png';
 import AppStore from '../../../stores/AppStore';
 
 export default class SliderQuestion extends React.Component {

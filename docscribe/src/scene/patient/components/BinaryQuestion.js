@@ -13,16 +13,6 @@ export default class BinaryQuestion extends React.Component {
     };
   }
 
-  componentDidMount() {
-    const { app, fb } = this.props;
-    const curr = app.object[fb];
-    if (curr === true) {
-      this.checkOne();
-    } else if (curr === false) {
-      this.checkTwo();
-    }
-  }
-
   checkOne = () => {
     this.props.app.updateFirebase(this.props.fb, true);
     const { oneChecked, twoChecked } = this.state;
@@ -50,15 +40,13 @@ export default class BinaryQuestion extends React.Component {
   };
 
   render() {
-    const { question, optionOne, optionTwo  } = this.props;
-    const { oneChecked, twoChecked } = this.state;
-
+    const { question, optionOne, optionTwo, app, fb  } = this.props;
     return (
       <View style={{ display: 'flex', flexDirection: 'row' }}>
         <Text style={{ width: '40%', textAlign: 'center' }}>{question}</Text>
         <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-          <CheckBox title={optionOne} checked={oneChecked} onPress={this.checkOne} />
-          <CheckBox title={optionTwo} checked={twoChecked} onPress={this.checkTwo} />
+          <CheckBox title={optionOne} checked={app.object[fb] === true} onPress={this.checkOne} />
+          <CheckBox title={optionTwo} checked={app.object[fb] === false} onPress={this.checkTwo} />
         </View>
       </View>
     );

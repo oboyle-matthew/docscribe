@@ -54,20 +54,20 @@ export default class Pain extends React.Component {
   render() {
     const { navigation } = this.props;
     const app = navigation.getParam('app');
-    const user = navigation.getParam('user');
+    console.log(app.user);
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <Button
           style={{ backgroundColor: 'red' }}
           title="HOME"
-          onPress={() => navigation.navigate('SignUp')}
+          onPress={() => navigation.navigate('Login')}
         />
         <Button
           style={{ backgroundColor: 'red' }}
           title="-"
           onPress={() => this.decrementDate()}
         />
-        <Text>{user}: {this.state.today}</Text>
+        <Text>{app.user}: {this.state.today}</Text>
         <Button
           style={{ backgroundColor: 'red' }}
           title="+"
@@ -94,7 +94,7 @@ export default class Pain extends React.Component {
           rightIcon={{name: 'navigate-next'}}
           backgroundColor="#1F96F4"
           title="CONTINUE"
-          onPress={() => navigation.navigate('Mobility', {app: app, user: user})}
+          onPress={() => navigation.navigate('Mobility', { app })}
         />
       </ScrollView>
     );

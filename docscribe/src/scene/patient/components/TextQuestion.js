@@ -5,17 +5,10 @@ import { Text, View, TextInput } from 'react-native';
 export default class TextQuestion extends React.Component {
   constructor() {
     super();
+    this.answer = '';
     this.state = {
-      answer: '',
-    };
-  }
-
-  componentDidMount() {
-    const { app, fb } = this.props;
-    const answer = app.object[fb] === null ? '' : app.object[fb];
-    this.setState({
-      answer,
-    });
+      answer: ''
+    }
   }
 
   textChange = newText => {
@@ -26,7 +19,6 @@ export default class TextQuestion extends React.Component {
 
   render() {
     const { question, fb, app } = this.props;
-    const { answer } = this.state;
     return (
       <View style={{ display: 'flex', flexDirection: 'row' }}>
         <Text style={{ width: '40%' }}>{question}</Text>
@@ -36,7 +28,7 @@ export default class TextQuestion extends React.Component {
           style={{ borderColor: 'gray', borderWidth: 1, height: '100%', width: '50%' }}
           onChangeText={this.textChange}
           placeholder="Input your answer here"
-          value={answer}
+          value={app.object[fb]}
         />
       </View>
     );

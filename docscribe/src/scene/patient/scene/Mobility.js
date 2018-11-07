@@ -19,13 +19,22 @@ export default class Pain extends React.Component {
     super();
     this.state = {
       submitted: false,
+      today: '',
     };
+  }
+
+  componentDidMount() {
+    const { navigation } = this.props;
+    const app = navigation.getParam('app');
+    this.setState({
+      today: app.getCurrentDate(),
+    });
   }
 
   submit() {
     const { navigation } = this.props;
     const app = navigation.getParam('app');
-    app.submitToFirebase(this.user);
+    app.submitToFirebase();
     this.setState({ submitted: true });
   }
 
@@ -36,35 +45,63 @@ export default class Pain extends React.Component {
     ]);
   }
 
+  incrementDate() {
+    const { navigation } = this.props;
+    const app = navigation.getParam('app');
+    app.incrementDate();
+    this.setState({
+      today: app.getCurrentDate(),
+    });
+  }
+
+  decrementDate() {
+    const { navigation } = this.props;
+    const app = navigation.getParam('app');
+    app.decrementDate();
+    this.setState({
+      today: app.getCurrentDate(),
+    });
+  }
+
   render() {
     const { submitted } = this.state;
     const { navigation } = this.props;
     const app = navigation.getParam('app');
-    this.user = navigation.getParam('user');
 
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <Button
           style={{ backgroundColor: 'red' }}
           title="HOME"
-          onPress={() => navigation.navigate('SignUp')}
+          onPress={() => navigation.navigate('Login')}
         />
+
         {submitted ? (
           <View>
             <Text>You have submitted!</Text>
             <Button
               style={{ backgroundColor: 'red' }}
               title="Submit another form"
-              onPress={() => navigation.navigate('Pain', { app, user: this.user })}
+              onPress={() => navigation.navigate('Pain', { app })}
             />
           </View>
         ) : (
           <Fragment>
-            <Text>{this.user}</Text>
+            <Button
+              style={{ backgroundColor: 'red' }}
+              title="-"
+              onPress={() => this.decrementDate()}
+            />
+            <Text>{app.user}: {this.state.today}</Text>
+            <Button
+              style={{ backgroundColor: 'red' }}
+              title="+"
+              onPress={() => this.incrementDate()}
+            />
             <Button
               backgroundColor="#1F96F4"
               title="BACK"
-              onPress={() => navigation.navigate('Pain', { app, user: this.user })}
+              onPress={() => navigation.navigate('Pain', { app })}
             />
             <BinaryQuestion
               fb="crutches"

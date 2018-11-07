@@ -10,8 +10,9 @@ export default class Login extends React.Component {
   handleLogin = () => {
     app.app.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
       if (user) {
-        app.user = user.user.email;
-        this.props.navigation.navigate('Pain', {app: app, user: user.user.email})
+        app.user = (user.user.email.split(/@.+.com/)[0].replace('.', '%24'));
+        app.logIn();
+        this.props.navigation.navigate('Pain', {app})
       }
     }).catch((error) => {
       alert("That combination doesn't exist in our records!");
@@ -44,7 +45,7 @@ export default class Login extends React.Component {
         <Button title="Login" onPress={this.handleLogin} />
         <Button
           title="Don't have an account? Sign Up"
-          onPress={() => this.props.navigation.navigate('SignUp', {app: app})}
+          onPress={() => this.props.navigation.navigate('SignUp', {app})}
         />
       </View>
     )

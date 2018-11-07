@@ -15,7 +15,7 @@ const Welcome = createSwitchNavigator(
     Mobility,
   },
   {
-    initialRouteName: 'SignUp',
+    initialRouteName: 'Login',
   }
 )
 

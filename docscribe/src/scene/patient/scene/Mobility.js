@@ -44,13 +44,18 @@ export default class Pain extends React.Component {
 
     return (
       <ScrollView contentContainerStyle={styles.container}>
+        <Button
+          style={{ backgroundColor: 'red' }}
+          title="HOME"
+          onPress={() => navigation.navigate('SignUp')}
+        />
         {submitted ? (
           <View>
             <Text>You have submitted!</Text>
             <Button
               style={{ backgroundColor: 'red' }}
               title="Submit another form"
-              onPress={() => navigation.navigate('Pain', { app: app, user: this.user })}
+              onPress={() => navigation.navigate('Pain', { app, user: this.user })}
             />
           </View>
         ) : (
@@ -59,7 +64,7 @@ export default class Pain extends React.Component {
             <Button
               backgroundColor="#1F96F4"
               title="BACK"
-              onPress={() => navigation.navigate('Pain', { app })}
+              onPress={() => navigation.navigate('Pain', { app, user: this.user })}
             />
             <BinaryQuestion
               fb="crutches"

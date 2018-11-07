@@ -4,19 +4,19 @@ import React from 'react'
 import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
 import AppStore from '../../stores/AppStore';
 
-const app = new AppStore();
-
 export default class SignUp extends React.Component {
   state = { email: '', password: '', errorMessage: null };
 
   handleSignUp = () => {
+    const { navigation } = this.props;
+    const app = navigation.getParam('app');
     return app.app.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
       if (user) {
-        alert("You've successfully registered an account!")
-        this.props.navigation.navigate('Pain', {app: app, user: user})
+        alert("You've successfully registered an account!");
+        this.props.navigation.navigate('Pain', {app: app, user: user.user.email})
       }
     }).catch((error) => {
-      alert("Try again!");
+      alert(error);
       this.setState({
         password: ''
       })

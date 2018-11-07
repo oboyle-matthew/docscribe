@@ -4,6 +4,7 @@ import { Text, View, Image } from 'react-native';
 import { Slider } from 'react-native-elements';
 import happyFace from '../../../../assets/happy.png';
 import sadFace from '../../../../assets/sad.png';
+import AppStore from '../../../stores/AppStore';
 
 export default class SliderQuestion extends React.Component {
   constructor(props) {
@@ -14,9 +15,10 @@ export default class SliderQuestion extends React.Component {
   }
 
   componentDidMount() {
-    const { max, min } = this.props;
+    const { max, min, app, fb } = this.props;
+    const answer = app.object[fb] === null ? (max + min) / 2 : app.object[fb];
     this.setState({
-      answer: (max + min) / 2,
+      answer,
     });
   }
 
@@ -64,4 +66,7 @@ SliderQuestion.propTypes = {
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   step: PropTypes.number.isRequired,
+  fb: PropTypes.string.isRequired,
+  app: PropTypes.instanceOf(AppStore).isRequired,
+
 };

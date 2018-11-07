@@ -37,6 +37,14 @@ export default class PickerQuestion extends Component {
     };
   }
 
+  componentDidMount() {
+    const { app, fb } = this.props;
+    const chosen = app.object[fb] === null ? undefined : app.object[fb];
+    this.setState({
+      chosen,
+    });
+  }
+
   render() {
     const { question, app, fb } = this.props;
     const { numbers, chosen } = this.state;

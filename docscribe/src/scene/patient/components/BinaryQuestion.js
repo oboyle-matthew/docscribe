@@ -13,6 +13,16 @@ export default class BinaryQuestion extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const { app, fb } = this.props;
+    const curr = app.object[fb];
+    if (curr === true) {
+      this.checkOne();
+    } else if (curr === false) {
+      this.checkTwo();
+    }
+  }
+
   checkOne = () => {
     this.props.app.updateFirebase(this.props.fb, true);
     const { oneChecked, twoChecked } = this.state;
@@ -40,8 +50,9 @@ export default class BinaryQuestion extends React.Component {
   };
 
   render() {
-    const { question, optionOne, optionTwo } = this.props;
+    const { question, optionOne, optionTwo  } = this.props;
     const { oneChecked, twoChecked } = this.state;
+
     return (
       <View style={{ display: 'flex', flexDirection: 'row' }}>
         <Text style={{ width: '40%', textAlign: 'center' }}>{question}</Text>

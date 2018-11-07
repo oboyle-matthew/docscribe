@@ -10,6 +10,14 @@ export default class TextQuestion extends React.Component {
     };
   }
 
+  componentDidMount() {
+    const { app, fb } = this.props;
+    const answer = app.object[fb] === null ? '' : app.object[fb];
+    this.setState({
+      answer,
+    });
+  }
+
   textChange = newText => {
     this.props.app.updateFirebase(this.props.fb, newText);
     // this.props.app[this.props.fb] = newText;

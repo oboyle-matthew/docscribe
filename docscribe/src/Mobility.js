@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { StyleSheet, Text, ScrollView, View, Alert } from 'react-native';
 import { Button } from 'react-native-elements';
-import { Permissions, Notifications } from 'expo';
 import BinaryQuestion from './components/BinaryQuestion';
 import SliderQuestion from './components/SliderQuestion';
 
@@ -22,33 +21,6 @@ export default class Mobility extends React.Component {
       submitted: false,
     };
   }
-
-  componentDidMount() {
-    this.registerForPushNotifications();
-  }
-
-  registerForPushNotifications = async () => {
-    const { status } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
-    let finalStatus = status;
-
-    if (status !== 'granted') {
-      const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
-      finalStatus = status;
-    }
-
-    if (finalStatus !== 'granted') {
-      return;
-    }
-
-    const token = await Notifications.getExpoPushTokenAsync();
-
-    const { user } = this.props;
-    const { navigation } = this.props;
-    const app = navigation.getParam('app');
-    app.database.ref(```users${user}```).set({
-      expoPushToken: token,
-    });
-  };
 
   submit() {
     const { navigation } = this.props;

@@ -11,6 +11,10 @@ const firebaseConfig = {
 const app = firebase.apps.length ? firebase.apps[0] : firebase.initializeApp(firebaseConfig);
 
 export default class AppStore extends React.Component {
+  static spliceEmail(email) {
+    return email.split(/@.+.com/)[0].replace('.', '%24');
+  }
+
   constructor() {
     super();
     this.app = app;
@@ -28,12 +32,11 @@ export default class AppStore extends React.Component {
   }
 
   submitToFirebase = user => {
-    this.listRef = this.app.database().ref('users/' + user.split(/@.+.com/)[0].replace('.', '%24'));
+    this.listRef = this.app.database().ref('users/' + AppStore.spliceEmail(user));
     this.listRef.push(this.object);
   };
 
   updateFirebase(part, answer) {
-    console.log(this.object);
     this.object[part] = answer;
   }
 }

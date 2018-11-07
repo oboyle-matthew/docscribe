@@ -29,6 +29,8 @@ export default class AppStore extends React.Component {
     this.object[part] = answer;
   }
 
+  this.app.database.ref("users/moboyle").push(token)l
+
   constructor() {
     super();
     this.app = app;

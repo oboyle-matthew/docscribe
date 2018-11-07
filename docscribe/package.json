@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "eslint-plugin-prettier": "^3.0.0",
-    "expo": "^30.0.1",
+    "expo": "^30.0.2",
     "firebase": "^5.5.5",
     "native-base": "^2.8.1",
     "prop-types": "^15.6.2",

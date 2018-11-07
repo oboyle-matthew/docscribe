@@ -88,21 +88,27 @@ export default class Pain extends React.Component {
         ) : (
           <Fragment>
             <Button
-              style={{ backgroundColor: 'red' }}
-              title="-"
-              onPress={() => this.decrementDate()}
-            />
-            <Text>{app.user}: {this.state.today}</Text>
-            <Button
-              style={{ backgroundColor: 'red' }}
-              title="+"
-              onPress={() => this.incrementDate()}
-            />
-            <Button
               backgroundColor="#1F96F4"
               title="BACK"
               onPress={() => navigation.navigate('Pain', { app })}
             />
+            <View style={{ flexDirection: 'row' }}>
+              <Button
+                style={{ backgroundColor: 'red' }}
+                title="<="
+                onPress={() => this.decrementDate()}
+              />
+              <View style={{ flexDirection: 'column' }}>
+                <Text>{app.user}</Text>
+                <Text>{this.state.today}</Text>
+              </View>
+              <Button
+                style={{ backgroundColor: 'red' }}
+                title="=>"
+                onPress={() => this.incrementDate()}
+              />
+            </View>
+
             <BinaryQuestion
               fb="crutches"
               app={app}

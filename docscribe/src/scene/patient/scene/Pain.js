@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, ScrollView, Text } from 'react-native';
+import { StyleSheet, ScrollView, Text, View } from 'react-native';
 import { Button } from 'react-native-elements';
 import TextQuestion from '../components/TextQuestion';
 import SliderQuestion from '../components/SliderQuestion';
@@ -62,17 +62,22 @@ export default class Pain extends React.Component {
           title="HOME"
           onPress={() => navigation.navigate('Login')}
         />
-        <Button
-          style={{ backgroundColor: 'red' }}
-          title="-"
-          onPress={() => this.decrementDate()}
-        />
-        <Text>{app.user}: {this.state.today}</Text>
-        <Button
-          style={{ backgroundColor: 'red' }}
-          title="+"
-          onPress={() => this.incrementDate()}
-        />
+        <View style={{ flexDirection: 'row' }}>
+          <Button
+            style={{ backgroundColor: 'red' }}
+            title="<="
+            onPress={() => this.decrementDate()}
+          />
+          <View style={{ flexDirection: 'column' }}>
+            <Text>{app.user}</Text>
+            <Text>{this.state.today}</Text>
+          </View>
+          <Button
+            style={{ backgroundColor: 'red' }}
+            title="=>"
+            onPress={() => this.incrementDate()}
+          />
+        </View>
         <TextQuestion fb="comment" app={app} question="Any comments for today?"/>
         <SliderQuestion
           fb="pain"

@@ -17,6 +17,6 @@ const Welcome = createSwitchNavigator(
   {
     initialRouteName: 'Login',
   }
-)
+);
 
 export default Welcome;

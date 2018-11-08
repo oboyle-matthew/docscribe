@@ -1,82 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 import { Permissions, Notifications } from 'expo';
+import PropTypes from 'prop-types';
 import AppStore from '../../stores/AppStore';
-
-const app = new AppStore();
-
-export default class Login extends React.Component {
-  state = { email: '', password: '', errorMessage: null };
-
-  registerForPushNotifications = async user => {
-    const { status } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
-    let finalStatus = status;
-
-    if (status !== 'granted') {
-      const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
-      finalStatus = status;
-    }
-
-    if (finalStatus !== 'granted') {
-      return;
-    }
-
-    const token = await Notifications.getExpoPushTokenAsync();
-
-    app.app
-      .database()
-      .ref(`users/${user}`)
-      .update({
-        expoPushToken: token,
-      });
-  };
-
-  handleLogin = () => {
-    app.app
-      .auth()
-      .signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then(user => {
-        if (user) {
-          app.user = AppStore.spliceEmail(user.user.email);
-          app.logIn();
-          this.registerForPushNotifications(AppStore.spliceEmail(user.user.email));
-          this.props.navigation.navigate('Pain', { app });
-        }
-      })
-      .catch(error => {
-        alert("That combination doesn't exist in our records!");
-      });
-  };
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Login</Text>
-        {this.state.errorMessage && <Text style={{ color: 'red' }}>{this.state.errorMessage}</Text>}
-        <TextInput
-          style={styles.textInput}
-          autoCapitalize="none"
-          placeholder="Email"
-          onChangeText={email => this.setState({ email })}
-          value={this.state.email}
-        />
-        <TextInput
-          secureTextEntry
-          style={styles.textInput}
-          autoCapitalize="none"
-          placeholder="Password"
-          onChangeText={password => this.setState({ password })}
-          value={this.state.password}
-        />
-        <Button title="Login" onPress={this.handleLogin} />
-        <Button
-          title="Don't have an account? Sign Up"
-          onPress={() => this.props.navigation.navigate('SignUp', { app })}
-        />
-      </View>
-    );
-  }
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -92,3 +18,86 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
 });
+
+const app = new AppStore();
+
+export default class Login extends React.Component {
+  state = { email: '', password: '', errorMessage: null };
+
+  registerForPushNotifications = async user => {
+    const { status } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
+    let finalStatus = status;
+
+    if (status !== 'granted') {
+      finalStatus = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+      if (finalStatus !== 'granted') {
+        return;
+      }
+    }
+
+    const token = await Notifications.getExpoPushTokenAsync();
+
+    app.app
+      .database()
+      .ref(`users/${user}`)
+      .update({
+        expoPushToken: token,
+      });
+  };
+
+  handleLogin = () => {
+    const { email, password } = this.state;
+    const { navigation } = this.props;
+    app.app
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(user => {
+        if (user) {
+          app.user = AppStore.spliceEmail(user.user.email);
+          app.logIn();
+          this.registerForPushNotifications(AppStore.spliceEmail(user.user.email));
+          navigation.navigate('Pain', { app });
+        }
+      })
+      .catch(() => {
+        alert("That combination doesn't exist in our records!");
+      });
+  };
+
+  render = () => {
+    const { email, errorMessage, password } = this.state;
+    const { navigation } = this.props;
+    return (
+      <View style={styles.container}>
+        <Text>Login</Text>
+        {errorMessage && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
+        <TextInput
+          style={styles.textInput}
+          autoCapitalize="none"
+          placeholder="Email"
+          onChangeText={text => this.setState({ email: text })}
+          value={email}
+        />
+        <TextInput
+          secureTextEntry
+          style={styles.textInput}
+          autoCapitalize="none"
+          placeholder="Password"
+          onChangeText={text => this.setState({ password: text })}
+          value={password}
+        />
+        <Button title="Login" onPress={this.handleLogin} />
+        <Button
+          title="Don't have an account? Sign Up"
+          onPress={() => navigation.navigate('SignUp', { app })}
+        />
+      </View>
+    );
+  };
+}
+
+Login.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
+};

@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
+import { Permissions, Notifications } from 'expo';
 import AppStore from '../../stores/AppStore';
 
 const app = new AppStore();
@@ -21,12 +22,7 @@ export default class Login extends React.Component {
     }
 
     const token = await Notifications.getExpoPushTokenAsync();
-    console.log(token);
-    console.log(`users/${user}`);
 
-    const { navigation } = this.props;
-    const app = navigation.getParam('app');
-    // console.log(app.app.database().ref(`users/${user}`));
     app.app
       .database()
       .ref(`users/${user}`)

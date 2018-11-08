@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Button, alert } from 'react-native';
 import { Permissions, Notifications } from 'expo';
 import PropTypes from 'prop-types';
 import AppStore from '../../stores/AppStore';

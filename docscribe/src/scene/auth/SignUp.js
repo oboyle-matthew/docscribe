@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View, Button, alert } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Button, Alert } from 'react-native';
 import PropTypes from 'prop-types';
 import AppStore from '../../stores/AppStore';
 
@@ -36,11 +36,11 @@ export default class SignUp extends React.Component {
         }
       })
       .catch(error => {
-        alert(error);
+        Alert.alert(error);
         this.setState({
           password: '',
         }).catch(() => {
-          alert('Try again!');
+          Alert.alert('Try again!');
           this.setState({
             password: '',
           });

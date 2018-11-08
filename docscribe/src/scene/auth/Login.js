@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View, Button, alert } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Button, Alert } from 'react-native';
 import { Permissions, Notifications } from 'expo';
 import PropTypes from 'prop-types';
 import AppStore from '../../stores/AppStore';
@@ -60,7 +60,7 @@ export default class Login extends React.Component {
         }
       })
       .catch(() => {
-        alert("That combination doesn't exist in our records!");
+        Alert.alert("That combination doesn't exist in our records!");
       });
   };
 

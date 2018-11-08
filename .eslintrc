@@ -16,8 +16,7 @@
       }
     ],
     "no-restricted-syntax": 0,
-    "no-dev-dependencies": 0,
-    "no-alert": 0
+    "no-dev-dependencies": 0
   },
   "plugins": ["prettier"]
 }

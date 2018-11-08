@@ -10,8 +10,9 @@ import AppStore from '../../../stores/AppStore';
 export default class SliderQuestion extends React.Component {
   constructor(props) {
     super(props);
+    const { min, max } = this.props;
     this.state = {
-      answer: 0,
+      answer: (min + max) / 2,
     };
   }
 
@@ -23,14 +24,16 @@ export default class SliderQuestion extends React.Component {
   }
 
   valueChanged(value) {
-    this.props.app.updateFirebase(this.props.fb, value);
+    const { app, fb } = this.props;
     this.setState({
       answer: value,
     });
+    app.updateFirebase(fb, value);
   }
 
   render() {
     const { question, min, max, step, app, fb } = this.props;
+    const { answer } = this.state;
 
     return (
       <View>
@@ -40,7 +43,7 @@ export default class SliderQuestion extends React.Component {
           minimumValue={min}
           maximumValue={max}
           onValueChange={value => this.valueChanged(value)}
-          value={app.object[fb] === null ? (min + max) / 2 : app.object[fb]}
+          value={app.object[fb] === null ? answer : app.object[fb]}
         />
         <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
           <Image

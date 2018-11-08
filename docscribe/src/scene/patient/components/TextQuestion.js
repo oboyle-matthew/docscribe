@@ -2,19 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, TextInput } from 'react-native';
 
+import AppStore from '../../../stores/AppStore';
+
 export default class TextQuestion extends React.Component {
   constructor() {
     super();
     this.answer = '';
-    this.state = {
-      answer: ''
-    }
   }
 
   textChange = newText => {
-    this.props.app.updateFirebase(this.props.fb, newText);
-    // this.props.app[this.props.fb] = newText;
-    this.setState({ answer: newText });
+    const { app, fb } = this.props;
+    app.updateFirebase(fb, newText);
   };
 
   render() {
@@ -37,4 +35,6 @@ export default class TextQuestion extends React.Component {
 
 TextQuestion.propTypes = {
   question: PropTypes.string.isRequired,
+  fb: PropTypes.string.isRequired,
+  app: PropTypes.instanceOf(AppStore).isRequired,
 };

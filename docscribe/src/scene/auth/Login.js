@@ -37,7 +37,7 @@ export default class Login extends React.Component {
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(user => {
         if (user) {
-          app.user = user.user.email.split(/@.+.com/)[0].replace('.', '%24');
+          app.user = AppStore.spliceEmail(user.user.email);
           app.logIn();
           this.registerForPushNotifications(AppStore.spliceEmail(user.user.email));
           this.props.navigation.navigate('Pain', { app });

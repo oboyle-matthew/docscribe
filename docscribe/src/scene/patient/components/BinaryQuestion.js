@@ -9,12 +9,13 @@ export default class BinaryQuestion extends React.Component {
     super(props);
     this.state = {
       oneChecked: false,
-      twoChecked: false
+      twoChecked: false,
     };
   }
 
   checkOne = () => {
-    this.props.app.updateFirebase(this.props.fb, true);
+    const { app, fb } = this.props;
+    app.updateFirebase(fb, true);
     const { oneChecked, twoChecked } = this.state;
     if (!oneChecked && twoChecked) {
       this.setState({
@@ -27,7 +28,8 @@ export default class BinaryQuestion extends React.Component {
   };
 
   checkTwo = () => {
-    this.props.app.updateFirebase(this.props.fb, false);
+    const { app, fb } = this.props;
+    app.updateFirebase(fb, false);
     const { oneChecked, twoChecked } = this.state;
     if (!twoChecked && oneChecked) {
       this.setState({
@@ -40,7 +42,7 @@ export default class BinaryQuestion extends React.Component {
   };
 
   render() {
-    const { question, optionOne, optionTwo, app, fb  } = this.props;
+    const { question, optionOne, optionTwo, app, fb } = this.props;
     return (
       <View style={{ display: 'flex', flexDirection: 'row' }}>
         <Text style={{ width: '40%', textAlign: 'center' }}>{question}</Text>
@@ -58,5 +60,5 @@ BinaryQuestion.propTypes = {
   optionOne: PropTypes.string.isRequired,
   optionTwo: PropTypes.string.isRequired,
   fb: PropTypes.string.isRequired,
-  // app: PropTypes.instanceOf(AppStore).isRequired,
+  app: PropTypes.instanceOf(AppStore).isRequired,
 };

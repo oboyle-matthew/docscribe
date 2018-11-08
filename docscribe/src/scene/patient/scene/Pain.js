@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
 });
 
 export default class Pain extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       today: '',
     };
@@ -54,7 +54,6 @@ export default class Pain extends React.Component {
   render() {
     const { navigation } = this.props;
     const app = navigation.getParam('app');
-    console.log(app.user);
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <Button
@@ -78,7 +77,7 @@ export default class Pain extends React.Component {
             onPress={() => this.incrementDate()}
           />
         </View>
-        <TextQuestion fb="comment" app={app} question="Any comments for today?"/>
+        <TextQuestion fb="comment" app={app} question="Any comments for today?" />
         <SliderQuestion
           fb="pain"
           app={app}
@@ -94,9 +93,9 @@ export default class Pain extends React.Component {
           optionOne="Yes"
           optionTwo="No"
         />
-        <PickerQuestion app={app} fb="pills" question="Number of pills taken today"/>
+        <PickerQuestion app={app} fb="pills" question="Number of pills taken today" />
         <Button
-          rightIcon={{name: 'navigate-next'}}
+          rightIcon={{ name: 'navigate-next' }}
           backgroundColor="#1F96F4"
           title="CONTINUE"
           onPress={() => navigation.navigate('Mobility', { app })}
@@ -110,4 +109,4 @@ Pain.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func,
   }).isRequired,
-}
+};

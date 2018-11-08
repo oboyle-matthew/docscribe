@@ -22,8 +22,12 @@ export default class PickerQuestion extends Component {
           mode="dropdown"
           iosIcon={<Icon name="ios-arrow-down-outline" />}
           style={{ width: undefined }}
-          selectedValue={chosen}
-          onValueChange={value => this.setState({ chosen: value })}
+          selectedValue={app.object[fb]}
+          onValueChange={value => {
+            this.setState({ chosen: value });
+            app.updateFirebase(fb, value);
+            app.object[fb] = value;
+          }}
         >
           {numbers.map(option => (
             <Picker.Item key={option} label={option} value={option} />

@@ -14,9 +14,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class Pain extends React.Component {
-  constructor() {
-    super();
+export default class Mobility extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
       submitted: false,
       today: '',

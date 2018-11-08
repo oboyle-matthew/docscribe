@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, Image } from 'react-native';
 import { Slider } from 'react-native-elements';
+
 import happyFace from '../../../../assets/happy2.png';
 import sadFace from '../../../../assets/sad2.png';
 import AppStore from '../../../stores/AppStore';
@@ -10,7 +11,7 @@ export default class SliderQuestion extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      answer: 0
+      answer: 0,
     };
   }
 
@@ -24,8 +25,8 @@ export default class SliderQuestion extends React.Component {
   valueChanged(value) {
     this.props.app.updateFirebase(this.props.fb, value);
     this.setState({
-      answer: value
-    })
+      answer: value,
+    });
   }
 
   render() {

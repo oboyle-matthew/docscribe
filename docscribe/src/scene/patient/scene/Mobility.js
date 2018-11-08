@@ -82,11 +82,7 @@ export default class Pain extends React.Component {
             <Button
               style={{ backgroundColor: 'red' }}
               title="Submit another form"
-<<<<<<< HEAD
-              onPress={() => navigation.navigate('Pain', { app, user: this.user })}
-=======
               onPress={() => navigation.navigate('Pain', { app })}
->>>>>>> master
             />
           </View>
         ) : (

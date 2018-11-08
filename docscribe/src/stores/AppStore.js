@@ -11,32 +11,10 @@ const firebaseConfig = {
 const app = firebase.apps.length ? firebase.apps[0] : firebase.initializeApp(firebaseConfig);
 
 export default class AppStore extends React.Component {
-<<<<<<< HEAD
   static spliceEmail(email) {
     return email.split(/@.+.com/)[0].replace('.', '%24');
   }
 
-  constructor() {
-    super();
-    this.app = app;
-    this.object =
-      this.object === undefined
-        ? {
-            comment: null,
-            crutches: null,
-            pain: null,
-            mobility: null,
-            pills: null,
-            prescription: null,
-          }
-        : this.object;
-  }
-
-  submitToFirebase = user => {
-    this.listRef = this.app.database().ref('users/' + AppStore.spliceEmail(user));
-    this.listRef.push(this.object);
-  };
-=======
   constructor() {
     super();
     this.app = app;
@@ -52,7 +30,7 @@ export default class AppStore extends React.Component {
       mobility: null,
       pills: null,
       prescription: null,
-    }
+    };
     this.date = new Date();
   }
 
@@ -65,9 +43,8 @@ export default class AppStore extends React.Component {
   getFirebaseData(fb) {
     if (this.allUserInfo[this.user] && this.allUserInfo[this.user][this.getCurrentDate()]) {
       return this.allUserInfo[this.user][this.getCurrentDate()][fb];
-    } else {
-      return null;
     }
+    return null;
   }
 
   getCurrentDate() {
@@ -104,13 +81,10 @@ export default class AppStore extends React.Component {
     this.listRef = this.app.database().ref(`users/${this.user}/${currDate}`);
     this.listRef.set(this.object);
   }
->>>>>>> master
 
   updateFirebase(part, answer) {
     this.object[part] = answer;
   }
-<<<<<<< HEAD
-=======
 
   resetObject() {
     this.object = {
@@ -122,5 +96,4 @@ export default class AppStore extends React.Component {
       prescription: null,
     };
   }
->>>>>>> master
 }

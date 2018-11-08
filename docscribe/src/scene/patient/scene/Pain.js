@@ -53,6 +53,7 @@ export default class Pain extends React.Component {
 
   render() {
     const { navigation } = this.props;
+    const { today } = this.state;
     const app = navigation.getParam('app');
     return (
       <ScrollView contentContainerStyle={styles.container}>
@@ -69,7 +70,7 @@ export default class Pain extends React.Component {
           />
           <View style={{ flexDirection: 'column' }}>
             <Text>{app.user}</Text>
-            <Text>{this.state.today}</Text>
+            <Text>{today}</Text>
           </View>
           <Button
             style={{ backgroundColor: 'red' }}

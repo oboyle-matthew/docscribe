@@ -34,12 +34,6 @@ export default class AppStore extends React.Component {
     this.date = new Date();
   }
 
-  logIn() {
-    Object.keys(this.object).forEach(obj => {
-      this.object[obj] = this.getFirebaseData(obj);
-    });
-  }
-
   getFirebaseData(fb) {
     if (this.allUserInfo[this.user] && this.allUserInfo[this.user][this.getCurrentDate()]) {
       return this.allUserInfo[this.user][this.getCurrentDate()][fb];
@@ -60,6 +54,12 @@ export default class AppStore extends React.Component {
       mm = `0${mm}`;
     }
     return `${mm}:${dd}:${yyyy}`;
+  }
+
+  logIn() {
+    Object.keys(this.object).forEach(obj => {
+      this.object[obj] = this.getFirebaseData(obj);
+    });
   }
 
   incrementDate() {

@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { StyleSheet, Text, ScrollView, View, Alert } from 'react-native';
 import { Button } from 'react-native-elements';
+import PropTypes from 'prop-types';
 import BinaryQuestion from '../components/BinaryQuestion';
 import SliderQuestion from '../components/SliderQuestion';
 
@@ -64,7 +65,7 @@ export default class Mobility extends React.Component {
   }
 
   render() {
-    const { submitted } = this.state;
+    const { submitted, today } = this.state;
     const { navigation } = this.props;
     const app = navigation.getParam('app');
 
@@ -100,7 +101,7 @@ export default class Mobility extends React.Component {
               />
               <View style={{ flexDirection: 'column' }}>
                 <Text>{app.user}</Text>
-                <Text>{this.state.today}</Text>
+                <Text>{today}</Text>
               </View>
               <Button
                 style={{ backgroundColor: 'red' }}
@@ -136,3 +137,9 @@ export default class Mobility extends React.Component {
     );
   }
 }
+
+Mobility.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
+};

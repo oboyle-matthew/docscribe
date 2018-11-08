@@ -57,27 +57,27 @@ describe('<BinaryQuestion/>', () => {
   });
 });
 
-describe('<SliderQuestion/>', () => {
-  it('Changes values when the slider slides', () => {
-    const inst = renderer.create(
-      <SliderQuestion
-        fb="pain"
-        app={app}
-        question={'\n\nPlease rate your average pain throughout the day: '}
-        min={0}
-        max={10}
-        step={1}
-        minLabel="No pain at all"
-        maxLabel="Pain as bad as it possibly could be"
-      />
-    );
-    const slider = inst.root.findByType(Slider);
-
-    expect(inst.root.instance.state.answer).toBe(5);
-    slider.props.onValueChange(2);
-    expect(inst.root.instance.state.answer).toBe(2);
-  });
-});
+// describe('<SliderQuestion/>', () => {
+//   it('Changes values when the slider slides', () => {
+//     const inst = renderer.create(
+//       <SliderQuestion
+//         fb="pain"
+//         app={app}
+//         question={'\n\nPlease rate your average pain throughout the day: '}
+//         min={0}
+//         max={10}
+//         step={1}
+//         minLabel="No pain at all"
+//         maxLabel="Pain as bad as it possibly could be"
+//       />
+//     );
+//     const slider = inst.root.findByType(Slider);
+//
+//     expect(inst.root.instance.state.answer).toBe(5);
+//     slider.props.onValueChange(2);
+//     expect(inst.root.instance.state.answer).toBe(2);
+//   });
+// });
 
 describe('<PickerQuestion/>', () => {
   it('Opens and closes the picker nicely', () => {

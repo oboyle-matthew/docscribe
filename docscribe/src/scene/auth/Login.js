@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
-import { Permissions, Notifications } from 'expo';
 import AppStore from '../../stores/AppStore';
+
+const app = new AppStore();
 
 export default class Login extends React.Component {
   state = { email: '', password: '', errorMessage: null };
@@ -35,16 +36,15 @@ export default class Login extends React.Component {
   };
 
   handleLogin = () => {
-    const { navigation } = this.props;
-    const app = navigation.getParam('app');
     app.app
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(user => {
         if (user) {
-          alert("You've successfully logged in!");
-          navigation.navigate('Pain', { app, user: user.user.email });
+          app.user = user.user.email.split(/@.+.com/)[0].replace('.', '%24');
+          app.logIn();
           this.registerForPushNotifications(AppStore.spliceEmail(user.user.email));
+          this.props.navigation.navigate('Pain', { app });
         }
       })
       .catch(error => {
@@ -75,7 +75,7 @@ export default class Login extends React.Component {
         <Button title="Login" onPress={this.handleLogin} />
         <Button
           title="Don't have an account? Sign Up"
-          onPress={() => this.props.navigation.navigate('SignUp')}
+          onPress={() => this.props.navigation.navigate('SignUp', { app })}
         />
       </View>
     );

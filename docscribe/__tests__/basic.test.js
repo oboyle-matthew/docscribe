@@ -15,21 +15,21 @@ afterAll(() => setTimeout(() => process.exit(), 1000));
 // Snapshots basically take a "picture" of your code (serialized I think) and then in future tests
 // You can compare the component to the original snapshot. "npm test -- -u" will overwrite the snapshot for a test.
 describe('<BinaryQuestion/>', () => {
-  it('renders correctly', () => {
-    const pain = renderer
-      .create(
-        <BinaryQuestion
-          fb="prescription"
-          app={app}
-          question="Did you adhere to the prescribed usage guidelines today?"
-          optionOne="Yes"
-          optionTwo="No"
-          style={{ marginBottom: '20%' }}
-        />
-      )
-      .toJSON();
-    expect(pain).toMatchSnapshot();
-  });
+  // it('renders correctly', () => {
+  //   const pain = renderer
+  //     .create(
+  //       <BinaryQuestion
+  //         fb="prescription"
+  //         app={app}
+  //         question="Did you adhere to the prescribed usage guidelines today?"
+  //         optionOne="Yes"
+  //         optionTwo="No"
+  //         style={{ marginBottom: '20%' }}
+  //       />
+  //     )
+  //     .toJSON();
+  //   expect(pain).toMatchSnapshot();
+  // });
 
   // If you want details on this I googled 'react test renderer docs' and used that as a starting point.
   // This basically iterates through each Checkbox and presses it, then checks to see if the boolean values change

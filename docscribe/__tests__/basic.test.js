@@ -8,10 +8,6 @@ import PickerQuestion from '../src/scene/patient/components/PickerQuestion';
 import TextQuestion from '../src/scene/patient/components/TextQuestion';
 import AppStore from '../src/stores/AppStore';
 
-it('works', () => {
-  expect(1).toBe(1);
-});
-
 const app = new AppStore();
 
 afterAll(() => setTimeout(() => process.exit(), 1000));
@@ -35,6 +31,10 @@ describe('<BinaryQuestion/>', () => {
     expect(pain).toMatchSnapshot();
   });
 
+  // If you want details on this I googled 'react test renderer docs' and used that as a starting point.
+  // This basically iterates through each Checkbox and presses it, then checks to see if the boolean values change
+  // I verified it's actually working by just removing the "not" and making sure it is actually getting proper
+  // values from the instance.
   it('Modifies values upon selection', () => {
     const inst = renderer.create(
       <BinaryQuestion

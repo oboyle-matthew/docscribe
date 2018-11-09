@@ -10,12 +10,12 @@ const App = createStackNavigator(
         title: 'Pain',
       },
     },
-    Mobility: {
-      screen: Mobility,
-      navigationOptions: {
-        title: 'Mobility',
-      },
-    },
+    // Mobility: {
+    //   screen: Mobility,
+    //   navigationOptions: {
+    //     title: 'Mobility',
+    //   },
+    // },
   },
   {
     initialRouteName: 'Pain', // first page to be shown

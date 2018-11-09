@@ -10,6 +10,7 @@
     "test": "node_modules/.bin/jest"
   },
   "dependencies": {
+    "@expo/vector-icons": "^8.0.0",
     "eslint-plugin-prettier": "^3.0.0",
     "expo": "^30.0.2",
     "firebase": "^5.5.8",

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View, Button, Alert } from 'react-native';
 import PropTypes from 'prop-types';
+import { Font, AppLoading } from 'expo';
 import AppStore from '../../stores/AppStore';
 
 const styles = StyleSheet.create({
@@ -22,6 +23,14 @@ const app = new AppStore();
 
 export default class Login extends React.Component {
   state = { email: '', password: '', errorMessage: null };
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      FontAwesome: require('@expo/vector-icons/fonts/FontAwesome.ttf'),
+      Ionicons: require('@expo/vector-icons/fonts/Ionicons.ttf'),
+      'Material Icons': require('@expo/vector-icons/fonts/MaterialIcons.ttf'),
+    });
+  }
 
   handleLogin = () => {
     const { email, password } = this.state;

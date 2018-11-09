@@ -120,13 +120,13 @@ export default class Mobility extends React.Component {
             <SliderQuestion
               app={app}
               fb="mobility"
-              question={'\n\nPlease rate your average pain throughout the day: '}
+              question="Please rate your average pain throughout the day:"
               min={0}
               max={10}
               step={1}
             />
             <Button
-              // rightIcon={{ name: 'expand-less' }}
+              rightIcon={{ name: 'expand-less' }}
               backgroundColor="#1F96F4"
               title="SUBMIT"
               onPress={() => this.confirm()}

@@ -126,7 +126,7 @@ export default class Mobility extends React.Component {
               step={1}
             />
             <Button
-              rightIcon={{ name: 'expand-less' }}
+              // rightIcon={{ name: 'expand-less' }}
               backgroundColor="#1F96F4"
               title="SUBMIT"
               onPress={() => this.confirm()}

@@ -6,6 +6,7 @@ import TextQuestion from '../components/TextQuestion';
 import SliderQuestion from '../components/SliderQuestion';
 import BinaryQuestion from '../components/BinaryQuestion';
 import PickerQuestion from '../components/PickerQuestion';
+import registerForPushNotifications from '../../../notifications/Notifications';
 
 const styles = StyleSheet.create({
   container: {
@@ -31,6 +32,7 @@ export default class Pain extends React.Component {
     this.setState({
       today: app.getCurrentDate(),
     });
+    registerForPushNotifications(app, app.user);
   }
 
   incrementDate() {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View, Button, Alert } from 'react-native';
-import { Permissions, Notifications } from 'expo';
 import PropTypes from 'prop-types';
 import AppStore from '../../stores/AppStore';
 
@@ -24,27 +23,6 @@ const app = new AppStore();
 export default class Login extends React.Component {
   state = { email: '', password: '', errorMessage: null };
 
-  registerForPushNotifications = async user => {
-    const { status } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
-    let finalStatus = status;
-
-    if (status !== 'granted') {
-      finalStatus = await Permissions.askAsync(Permissions.NOTIFICATIONS);
-      if (finalStatus !== 'granted') {
-        return;
-      }
-    }
-
-    const token = await Notifications.getExpoPushTokenAsync();
-
-    app.app
-      .database()
-      .ref(`users/${user}`)
-      .update({
-        expoPushToken: token,
-      });
-  };
-
   handleLogin = () => {
     const { email, password } = this.state;
     const { navigation } = this.props;
@@ -55,7 +33,6 @@ export default class Login extends React.Component {
         if (user) {
           app.user = AppStore.spliceEmail(user.user.email);
           app.logIn();
-          this.registerForPushNotifications(AppStore.spliceEmail(user.user.email));
           navigation.navigate('Pain', { app });
         }
       })

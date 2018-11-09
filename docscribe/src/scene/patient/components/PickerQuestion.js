@@ -22,7 +22,7 @@ export default class PickerQuestion extends Component {
         <Text>{question}</Text>
         <Picker
           mode="dropdown"
-          iosIcon={<Icon name="ios-arrow-down-outline" />}
+          // iosIcon={<Icon name="ios-arrow-down-outline" />}
           style={{ width: undefined }}
           selectedValue={app.object[fb] ? app.object[fb] : DEFAULT}
           onValueChange={value => {

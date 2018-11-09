@@ -1,7 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View, Button, Alert } from 'react-native';
 import PropTypes from 'prop-types';
-import { Font, AppLoading } from 'expo';
+import { Font } from 'expo';
+import FontAwesome from '@expo/vector-icons/fonts/FontAwesome.ttf';
+import Ionicons from '@expo/vector-icons/fonts/Ionicons.ttf';
+import MaterialIcons from '@expo/vector-icons/fonts/MaterialIcons.ttf';
+
 import AppStore from '../../stores/AppStore';
 
 const styles = StyleSheet.create({
@@ -26,9 +30,9 @@ export default class Login extends React.Component {
 
   async componentDidMount() {
     await Font.loadAsync({
-      FontAwesome: require('@expo/vector-icons/fonts/FontAwesome.ttf'),
-      Ionicons: require('@expo/vector-icons/fonts/Ionicons.ttf'),
-      'Material Icons': require('@expo/vector-icons/fonts/MaterialIcons.ttf'),
+      FontAwesome,
+      Ionicons,
+      'Material Icons': MaterialIcons,
     });
   }
 

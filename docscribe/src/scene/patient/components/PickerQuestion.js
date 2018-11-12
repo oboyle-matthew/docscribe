@@ -26,6 +26,7 @@ export default class PickerQuestion extends Component {
           style={{ width: undefined }}
           selectedValue={app.object[fb] ? app.object[fb] : DEFAULT}
           onValueChange={value => {
+            this.setState({});
             app.updateFirebase(fb, value);
             app.object[fb] = value;
           }}

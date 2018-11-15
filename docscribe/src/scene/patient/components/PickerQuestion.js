@@ -14,30 +14,30 @@ export default class PickerQuestion extends Component {
     };
   }
 
-  render() {
-    const { question, app, fb } = this.props;
-    const { numbers } = this.state;
-    return (
-      <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-        <Text>{question}</Text>
-        <Picker
-          mode="dropdown"
-          iosIcon={<Icon name="ios-arrow-down-outline" />}
-          style={{ width: undefined }}
-          selectedValue={app.object[fb] ? app.object[fb] : DEFAULT}
-          onValueChange={value => {
-            this.setState({});
-            app.updateFirebase(fb, value);
-            app.object[fb] = value;
-          }}
-        >
-          {numbers.map(option => (
-            <Picker.Item key={option} label={option} value={option} />
-          ))}
-        </Picker>
-      </View>
-    );
-  }
+    updateValue(value) {
+        this.setState({ chosen: value });
+    }
+
+    render() {
+      const { question } = this.props;
+      const { chosen } = this.state;
+      return (
+          <View style={{ alignItems: 'center' }}>
+              <Text>{question}</Text>
+              <Picker
+                  mode="dropdown"
+                  iosIcon={<Icon name="ios-arrow-down-outline" />}
+                  selectedValue={chosen}
+                  onValueChange={value => this.updateValue(value)}
+              >
+                  {this.state.numbers.map(option => (
+                      <Picker.Item key={option} label={option} value={option} />
+                  ))}
+                  </Picker>
+            </View>
+        );
+    }
+
 }
 
 PickerQuestion.propTypes = {

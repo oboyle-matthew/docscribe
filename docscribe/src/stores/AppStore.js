@@ -23,14 +23,7 @@ export default class AppStore extends React.Component {
     ref.on('value', snap => {
       this.allUserInfo = snap.val();
     });
-    this.object = {
-      comment: null,
-      crutches: null,
-      pain: null,
-      mobility: null,
-      pills: null,
-      prescription: null,
-    };
+    this.object = {};
     this.date = new Date();
   }
 
@@ -84,16 +77,5 @@ export default class AppStore extends React.Component {
 
   updateFirebase(part, answer) {
     this.object[part] = answer;
-  }
-
-  resetObject() {
-    this.object = {
-      comment: null,
-      crutches: null,
-      pain: null,
-      mobility: null,
-      pills: null,
-      prescription: null,
-    };
   }
 }

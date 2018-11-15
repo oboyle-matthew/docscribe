@@ -18,7 +18,7 @@ export default class SliderQuestion extends React.Component {
 
   componentDidMount() {
     const { max, min, app, fb } = this.props;
-    if (app.object[fb] === null) {
+    if (app.object[fb] === undefined || app.object[fb] === null) {
       app.object[fb] = (max + min) / 2;
     }
   }

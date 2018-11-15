@@ -1,47 +1,48 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { Picker, Icon } from 'native-base';
+import { Picker, Icon, Form } from 'native-base';
 import PropTypes from 'prop-types';
-import AppStore from '../../../stores/AppStore';
-
-const DEFAULT = '0';
 
 export default class PickerQuestion extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      numbers: ['0', '1', '2', '3', '4', '5+'],
+      chosen: 0,
     };
   }
 
-    updateValue(value) {
-        this.setState({ chosen: value });
+  updateValue(value) {
+    const { onValueChanged } = this.props;
+    this.setState({ chosen: value });
+    {
+      onValueChanged && onValueChanged(value);
     }
+  }
 
-    render() {
-      const { question } = this.props;
-      const { chosen } = this.state;
-      return (
-          <View style={{ alignItems: 'center' }}>
-              <Text>{question}</Text>
-              <Picker
-                  mode="dropdown"
-                  iosIcon={<Icon name="ios-arrow-down-outline" />}
-                  selectedValue={chosen}
-                  onValueChange={value => this.updateValue(value)}
-              >
-                  {this.state.numbers.map(option => (
-                      <Picker.Item key={option} label={option} value={option} />
-                  ))}
-                  </Picker>
-            </View>
-        );
-    }
-
+  render() {
+    const { question, options, placeholder } = this.props;
+    const { chosen } = this.state;
+    return (
+      <View style={{ height: '15%', alignItems: 'center' }}>
+        <Text>{question}</Text>
+        <Picker
+          iosIcon={<Icon name="ios-arrow-dropdown" />}
+          style={{ width: 300 }}
+          mode="dropdown"
+          placeholder={placeholder}
+          selectedValue={chosen}
+          onValueChange={value => this.updateValue(value)}
+        >
+          <Picker.Item disabled value="pills" label={placeholder} />
+          {options.map(option => (
+            <Picker.Item key={option} label={option} value={option} />
+          ))}
+        </Picker>
+      </View>
+    );
+  }
 }
 
 PickerQuestion.propTypes = {
   question: PropTypes.string.isRequired,
-  fb: PropTypes.string.isRequired,
-  app: PropTypes.instanceOf(AppStore).isRequired,
 };

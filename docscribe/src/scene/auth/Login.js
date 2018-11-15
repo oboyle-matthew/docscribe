@@ -5,7 +5,6 @@ import { Font } from 'expo';
 import FontAwesome from '@expo/vector-icons/fonts/FontAwesome.ttf';
 import Ionicons from '@expo/vector-icons/fonts/Ionicons.ttf';
 import MaterialIcons from '@expo/vector-icons/fonts/MaterialIcons.ttf';
-
 import AppStore from '../../stores/AppStore';
 
 const styles = StyleSheet.create({
@@ -23,7 +22,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const app = new AppStore();
 
 export default class Login extends React.Component {
   state = { email: '', password: '', errorMessage: null };
@@ -38,7 +36,8 @@ export default class Login extends React.Component {
 
   handleLogin = () => {
     const { email, password } = this.state;
-    const { navigation } = this.props;
+    const { navigation, screenProps } = this.props;
+    const app = screenProps;
     app.app
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -46,7 +45,7 @@ export default class Login extends React.Component {
         if (user) {
           app.user = AppStore.spliceEmail(user.user.email);
           app.logIn();
-          navigation.navigate('Pain', { app });
+          navigation.navigate('Pain');
         }
       })
       .catch(() => {
@@ -56,8 +55,9 @@ export default class Login extends React.Component {
 
   render = () => {
     const { email, errorMessage, password } = this.state;
-    const { navigation } = this.props;
-    return (
+    const { navigation, screenProps } = this.props;
+    const app = screenProps;
+      return (
       <View style={styles.container}>
         <Text>Login</Text>
         {errorMessage && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
@@ -79,7 +79,7 @@ export default class Login extends React.Component {
         <Button title="Login" onPress={this.handleLogin} />
         <Button
           title="Don't have an account? Sign Up"
-          onPress={() => navigation.navigate('SignUp', { app })}
+          onPress={() => navigation.navigate('SignUp')}
         />
       </View>
     );

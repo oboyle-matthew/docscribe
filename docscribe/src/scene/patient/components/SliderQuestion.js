@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, Image } from 'react-native';
 import { Slider } from 'react-native-elements';
-
 import happyFace from '../../../../assets/happy.png';
 import sadFace from '../../../../assets/sad.png';
 import AppStore from '../../../stores/AppStore';
@@ -18,7 +17,7 @@ export default class SliderQuestion extends React.Component {
 
   componentDidMount() {
     const { max, min, app, fb } = this.props;
-    if (app.object[fb] === undefined || app.object[fb] === null) {
+    if (app.object[fb] === null) {
       app.object[fb] = (max + min) / 2;
     }
   }

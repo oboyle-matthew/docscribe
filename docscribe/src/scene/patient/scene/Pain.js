@@ -27,8 +27,8 @@ export default class Pain extends React.Component {
   }
 
   componentDidMount() {
-    const { navigation } = this.props;
-    const app = navigation.getParam('app');
+    const { screenProps } = this.props;
+    const app = screenProps;
     this.setState({
       today: app.getCurrentDate(),
     });
@@ -36,8 +36,8 @@ export default class Pain extends React.Component {
   }
 
   incrementDate() {
-    const { navigation } = this.props;
-    const app = navigation.getParam('app');
+    const { screenProps } = this.props;
+    const app = screenProps;
     app.incrementDate();
     this.setState({
       today: app.getCurrentDate(),
@@ -45,8 +45,8 @@ export default class Pain extends React.Component {
   }
 
   decrementDate() {
-    const { navigation } = this.props;
-    const app = navigation.getParam('app');
+    const { screenProps } = this.props;
+    const app = screenProps;
     app.decrementDate();
     this.setState({
       today: app.getCurrentDate(),
@@ -54,9 +54,9 @@ export default class Pain extends React.Component {
   }
 
   render() {
-    const { navigation } = this.props;
+    const { screenProps, navigation } = this.props;
+    const app = screenProps;
     const { today } = this.state;
-    const app = navigation.getParam('app');
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <Button
@@ -96,7 +96,12 @@ export default class Pain extends React.Component {
           optionOne="Yes"
           optionTwo="No"
         />
-        <PickerQuestion app={app} fb="pills" question="Number of pills taken today" />
+        <PickerQuestion
+          app={app}
+          options={['0', '1', '2', '3', '4', '5+']}
+          fb="pills"
+          question="Number of pills taken today"
+        />
         <Button
           rightIcon={{ name: 'navigate-next' }}
           backgroundColor="#1F96F4"
@@ -107,9 +112,3 @@ export default class Pain extends React.Component {
     );
   }
 }
-
-Pain.propTypes = {
-  navigation: PropTypes.shape({
-    navigate: PropTypes.func,
-  }).isRequired,
-};

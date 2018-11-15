@@ -80,7 +80,7 @@ export default class Pain extends React.Component {
             onPress={() => this.incrementDate()}
           />
         </View>
-        <TextQuestion fb="comment" app={app} question="Any comments for today?" />
+        <TextQuestion app={screenProps} objectKey="comment" question="Any comments for today?" />
         <SliderQuestion
           fb="pain"
           app={app}

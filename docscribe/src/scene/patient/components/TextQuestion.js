@@ -2,21 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, TextInput } from 'react-native';
 
-import AppStore from '../../../stores/AppStore';
-
 export default class TextQuestion extends React.Component {
   constructor() {
     super();
-    this.answer = '';
+    this.state = {
+      answer: '',
+    };
   }
 
-  textChange = newText => {
-    const { app, fb } = this.props;
-    app.updateFirebase(fb, newText);
-  };
+  componentDidMount() {
+    const { app, objectKey } = this.props;
+    app &&
+      app.object &&
+      this.setState({
+        answer: app.object[objectKey],
+      });
+  }
 
   render() {
-    const { question, fb, app } = this.props;
+    const { question, app, objectKey } = this.props;
+    const { answer } = this.state;
     return (
       <View style={{ display: 'flex', flexDirection: 'row' }}>
         <Text style={{ width: '40%' }}>{question}</Text>
@@ -24,9 +29,12 @@ export default class TextQuestion extends React.Component {
           multiline
           blurOnSubmit
           style={{ borderColor: 'gray', borderWidth: 1, height: '100%', width: '50%' }}
-          onChangeText={this.textChange}
+          onChangeText={text => {
+            this.setState({ answer: text });
+            app.object[objectKey] = text;
+          }}
           placeholder="Input your answer here"
-          value={app.object[fb]}
+          value={answer}
         />
       </View>
     );
@@ -35,6 +43,4 @@ export default class TextQuestion extends React.Component {
 
 TextQuestion.propTypes = {
   question: PropTypes.string.isRequired,
-  fb: PropTypes.string.isRequired,
-  app: PropTypes.instanceOf(AppStore).isRequired,
 };
